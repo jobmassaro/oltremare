@@ -1,0 +1,86 @@
+<form class="form-horizontal alert alert-warning" id="editForm" ng-submit="UpdateInfo(currentUser)" hidden>
+<h3 class="text-center">Aggiornameto</h3>
+	<div class="form-group">
+		<label for="Nome">Nome:</label>
+		<input type="text" class="form-control" ng-model="currentUser.name" value="{{currentUser.name}}">
+	</div>
+	<div class="form-group">
+		<label for="Cognome">Cognome:</label>
+		<input type="text" class="form-control" ng-model="currentUser.surname" value="{{currentUser.surname}}">
+	</div>
+	<div class="form-group">
+		<label for="Username">Nickname:</label>
+		<input type="text" class="form-control" ng-model="currentUser.username" value="{{currentUser.username}}">
+	</div>
+	
+	<div class="form-group">
+		<label for="Datanascita">Data Nascita:</label>
+		<md-datepicker ng-model="currentUser.data_nascita" md-placeholder="{{currentUser.data_nascita}}"></md-datepicker>
+		<!--<input type="text" class="form-control" ng-model="currentUser.data_nascita" value="{{currentUser.data_nascita}}">-->
+	</div>
+
+	<div class="form-group">
+		<label for="Indirizzo">Indirizzo:</label>
+		<input type="text" class="form-control" ng-model="currentUser.via" value="{{currentUser.via}}">
+	</div>
+	<div class="form-group">
+		<label for="Numcivico">Numero civico:</label>
+		<input type="text" class="form-control" ng-model="currentUser.civico" value="{{currentUser.civico}}">
+	</div>
+	<div class="form-group">
+		<label for="Cap">Cap:</label>
+		<input type="text" class="form-control" ng-model="currentUser.cap" value="{{currentUser.cap}}">
+	</div>
+	<div class="form-group">
+		<label for="Citta">Citta:</label>
+		<input type="text" class="form-control" ng-model="currentUser.comune" value="{{currentUser.comune}}">
+	</div>
+	<div class="form-group">
+		<label for="Provincia">Provincia:</label>
+		<input type="text" class="form-control" ng-model="currentUser.provincia" value="{{currentUser.provincia}}">
+	</div>
+
+	<div class="form-group">
+		<label for="CodFiscale">Codice Fiscale:</label>
+		<input type="text" class="form-control" ng-model="currentUser.cod_fiscale" value="{{currentUser.cod_fiscale}}">
+	</div>
+
+	<div class="form-group">
+		<label for="ParIva">Partita IVA:</label>
+		<input type="text" class="form-control" ng-model="currentUser.cod_piva" value="{{currentUser.cod_piva}}">
+	</div>
+
+	<div class="form-group">
+		<label for="Gender">Sesso:</label>
+		<label for="" class="radio-inline gender">
+				<input type="radio" ng-model="currentUser.sesso" value="uomo" >Uomo
+		</label>
+		<label for="" class="radio-inline gender">
+			<input type="radio" name="gender" ng-model="currentUser.sesso" value="donna">Donna
+		</label>
+	</div>
+
+	<div class="form-group">
+		<label for="Spostato">Sposato:</label>
+		<label for="" class="radio-inline gender">
+				<input type="radio" ng-model="currentUser.sposato" value="si" >SI
+		</label>
+		<label for="" class="radio-inline gender">
+			<input type="radio" name="sposato" ng-model="currentUser.sposato" value="no">NO
+		</label>
+	</div>
+		
+	<div class="form-group">
+		<label for="Figli">Figli:</label>
+		<input type="text" class="form-control" ng-model="currentUser.figli" value="{{currentUser.figli}}">
+	</div>		
+	
+
+	<div class="form-group">
+		<label for="Professione">Professione:</label>
+		<input type="text" class="form-control" ng-model="currentUser.professione" value="{{currentUser.professione}}">
+	</div>
+	<div class="form-group">
+		<button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateMsg(currentUser.id)">Aggiorna</button>
+	</div>
+</form>

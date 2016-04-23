@@ -1,0 +1,1 @@
+"UPDATE cv_socio  SET id_utente ='4761',tess_uisp ='eqweqw',uisp_numero='eweqw',datarilascio='04\/18\/2016',certificato='ewqeqw',patente='ewqewq',patente_tipo='ewqeqweqe',data_scadenza_patente='05\/15\/2016',fiv_scadenza='' WHERE id=3 AND id_utente=4761"

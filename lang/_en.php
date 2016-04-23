@@ -1,0 +1,114 @@
+<?php
+/*
+------------------
+Language: English
+------------------
+*/
+//$lang = array();
+$lang['DASHBOARD'] = 'Dashboard';
+$lang['ACCEPTED_TERMS'] = 'Accepted Terms';
+$lang['BALANCE'] = 'Balance';
+$lang['TOTAL_BALANCE'] = 'Total Balance';
+$lang['RANDOM_PASS_NOTE'] = 'Note: A random password will be generated and emailed to the user';
+$lang['CREATE_USER'] = 'Create User';
+$lang['FULLNAME'] = 'Full Name';
+$lang['EMAIL'] = 'E-mail';
+$lang['SEND_EMAIL'] = 'Send E-mail';
+$lang['EMAIL_SETTINGS'] = 'Email Settings';
+$lang['EMAIL_CONFIRMED'] = 'Email Confirmed';
+$lang['REG_DATE'] = 'Registration Date';
+$lang['LAST_LOGIN'] = 'Last Login';
+$lang['USERNAME'] = 'Username';
+$lang['USER_LEVEL'] = 'User Level';
+$lang['SETTINGS'] = 'Settings';
+$lang['ACCOUNT_PROFILE'] = 'Account Profile';
+$lang['ADMIN_USER'] = 'Admin User';
+$lang['ADD'] = 'Add';
+$lang['ADMIN_SETTINGS'] = 'Admin Settings';
+$lang['ALLOW_REGISTRATION'] = 'Allow Registration';
+$lang['CREATE_NEW_PASSWORD'] = 'Create a new account password';
+$lang['CHANGE_PASSWORD'] = 'Change Password';
+$lang['CLOSE'] = 'Close';
+$lang['DELETE'] = 'Delete';
+$lang['LOGIN'] = 'Login';
+$lang['LOGOFF'] = 'Logoff';
+$lang['META_DESCRIPTION'] = 'Meta Description';
+$lang['META_TITLE'] = 'Meta Title';
+$lang['NAME'] = 'Name';
+$lang['SAVE'] = 'Save';
+$lang['SITE_TITLE'] = 'Site Title';
+$lang['SITE_EMAIL'] = 'Site Email';
+$lang['UPLOAD'] = 'Upload';
+$lang['USER_MANAGEMENT'] = 'User Management';
+$lang['USERNAME'] = 'Username';
+$lang['ADD_LEVEL'] = 'Add Level';
+$lang['ADD_PERMISSION_LEVELS'] = 'Add Permission Levels';
+$lang['PERMISSION_LEVELS'] = 'Permission Levels';
+$lang['NAME'] = 'Name';
+$lang['LEVEL'] = 'Level';
+$lang['ACTION'] = 'Action'; 
+$lang['DELETE'] = 'Delete';
+$lang['SAVE_CHANGES'] = 'Save Changes';
+$lang['REDIRECT_LOGIN'] = 'Redirect Login'; 
+$lang['EMAIL_SETTINGS'] = 'E-mail Settings';
+$lang['REGISTER_LOGIN_SETTINGS'] = 'Register/Login Settings';
+$lang['SEND_EMAIL'] = 'Send E-mail';
+$lang['SITE_SETTINGS'] = 'Site Settings';
+$lang['UPDATE'] = 'Update';
+$lang['TOTAL_USERS'] = 'Total Users';
+$lang['TOTAL_CONFIRMED'] = 'Total Confirmed';
+$lang['TOTAL_AT'] = 'Total Accepted Terms';
+ //DEMO LANGUAGE
+$lang['ALL_USERS'] = 'All Users';
+$lang['ALL_USERS_MESSAGE'] = 'All logged in users can view this content! To protect a page simply call the auth/protect.php file! <br><br>
+As you can see with the other 3 examples, it is very easy to show content to specific user levels that you can define. Check out settings/user levels. ';
+$lang['ADMIN_EYES_ONLY'] = 'Admin Eyes Only';
+$lang['ADMIN_EYES_ONLY_MESSAGE_SUCCESS'] = 'If your logged in as an admin user, you can see this! Otherwise you will see a message stating that this content is blocked (or you can just hide it!)';
+$lang['ADMIN_EYES_ONLY_MESSAGE_RESTRICTED'] = 'This content is restricted to Admin Level 1 users only!';
+$lang['L2B'] = 'Level 2 and Below Users!';
+$lang['L2B_SUCCESS'] = 'Want to make it so you can show content only to certain users with access of level 2 or below (level 1)? Great if you want content available to admins and level 2 but not level 3 users!';
+$lang['L2B_RESTRICTED'] = 'This content is restricted to Admin Level 1 or Level 2 users only!';
+$lang['L2A'] = 'Level 2 and Above Users!';
+$lang['L2A_SUCCESS'] = 'Want to make it so you can show content only to certain users with access of level 2 or above (level 3)? Great if you want content available to level 2 but not level 1 users!';
+$lang['L2A_RESTRICTED'] = 'This content is restricted to Level 2 and above only!';
+$lang['SSP'] = 'Special Page just for (Level 2)';
+$lang['SSP_MESSAGE'] = 'You can redirect any user level to any page you want when they login in the user level settings!';
+$lang['INACTIVITY_SETTINGS'] = 'Inactivity Settings';
+$lang['WARNING_MESSAGE'] = 'Warning Message';
+$lang['WARNING_TITLE'] = 'Warning Title';
+$lang['WARNING_TIMER'] = 'Warning Timer';
+$lang['TIMEOUT_TIMER'] = 'Timeout Timer';
+$lang['INACTIVITY_TIMEOUT'] = 'Inactivity Timeout';
+$lang['TO'] = 'To (seperate multiple addresses with a comma)';
+$lang['FROM'] = 'From';
+$lang['SUBJECT'] = 'Subject';
+$lang['EMAIL_CONTENT'] = 'Email Content';
+$lang['SEND'] = 'Send';
+$lang['NUMBER_OF_USERS'] = 'Number of Users';
+//V1.2 UPDATES
+$lang['MEMBERSHIP_SETTINGS'] = 'Membership Plans';
+$lang['ADD_MEMBERSHIP'] = 'Add Membership';
+$lang['MEMBERSHIP_PLANS'] = 'Membership Plans';
+$lang['MEMBERSHIP_PLAN'] = 'Membership';
+$lang['TRIAL_PERIOD'] = 'Trial Period';
+$lang['TRIAL_COST'] = 'Trial Cost';
+$lang['MEMBERSHIP_COST'] = 'Membership Cost';
+$lang['RECURRING'] = "Reoccurs";
+$lang['FEATURES'] = "Plan Features";
+$lang['ADD_FEATURES'] = "Add Plan Features (shows on pricing tables)";
+$lang['ORDER_ID'] = "List Order";
+$lang['STATUS'] = "Status";
+$lang['TRAFFIC_STATISTICS'] = "Traffic Statistics";
+$lang['BROWSER'] = "Browser";
+$lang['OS'] = "Operating System";
+$lang['DATETIME'] = "Date / Time";
+$lang['IP'] = "IP";
+$lang['DEVICE_TYPE'] = "Device Type";
+$lang['COUNTRY'] = "Country";
+$lang['USER'] = "User";
+$lang['ACTION_ORDER'] = "Action Order";
+$lang['PAGE'] = "Page";
+$lang['PAGE_TRACK'] = "Page Track (View pages a user has visited)";
+$lang['TOTAL_UNIQUE'] = "Unique Visits";
+$lang['TOTAL_PAGE_VIEWS'] = "Page Views";
+?>

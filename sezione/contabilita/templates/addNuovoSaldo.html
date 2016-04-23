@@ -1,0 +1,52 @@
+
+<div ng-repeat="c in contabilita">  
+<form class="form-horizontal alert alert-warning" id="cntAddForm" ng-submit="UpdateInfo(c)" hidden>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Aggiungi</div>
+</div>
+
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Nome:</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="c.name" value="{{c.name}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Cognome:</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="c.surname" value="{{c.surname}}">
+		</div>
+	</div>
+    <div class="form-group">
+      <label for="tipo"  class="col-sm-2 control-label">Data :</label>
+  	  <div class="col-sm-4">
+        <md-datepicker ng-model="c.data_conatbile" md-placeholder="{{c.data_conatbile}}"></md-datepicker>
+      </div>
+    </div>
+
+    <div class="form-group">
+  		<label for="tipo"  class="col-sm-2 control-label">Descrizione:</label>
+  		<div class="col-sm-4">
+  			<input type="text" class="form-control" ng-model="c.descrizione" value="{{c.descrizione}}">
+  		</div>
+	</div>
+    <div class="form-group">
+      <label for="tipo"  class="col-sm-2 control-label">Acconto:</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" ng-model="c.acconto" value="{{c.acconto}}">
+      </div>
+  </div>
+
+   <div class="form-group">
+      <label for="tipo"  class="col-sm-2 control-label">Saldo:</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" ng-model="c.saldo" value="{{c.saldo}}">
+      </div>
+  </div>
+
+	<div class="form-group">
+		<button class="btn btn-warning" ng-disabled="c.$invalid" ng-click="updateSaldo(c)">Inserisci</button>
+	</div>
+</form>
+</div>

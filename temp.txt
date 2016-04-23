@@ -1,0 +1,379 @@
+
+ /**/
+ 
+
+
+
+
+	if($username_exists=='' && $email_exists=='')
+	{
+
+		$get_level = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT default_user_level FROM ".$prefix."rl_settings WHERE id=1"));
+		$default_user_level = $get_level['default_user_level'];
+		$terms = '1';
+		$reg_date = date("d-m-Y H:i:s");
+		$pw = rand(9999999,99999999999);
+		$hash = password_hash($pw, PASSWORD_DEFAULT, array("cost" => 10));
+
+		if($require_email=='1')
+		{
+			$email_key = randomizer();
+		}
+		else
+		{
+			$email_key='0';
+		}	
+
+		
+
+		$status = 'active';
+		 
+		 $query = "INSERT INTO " . 
+		 $prefix ."members ( id,name, surname, username, email , password, terms, email_key, user_level, reg_date,
+		 	status,
+		 	plan_id,
+ 			cod_fiscale,
+ 			cod_piva,
+ 			data_nascita,
+ 			telefono,
+ 			mobile, 
+ 			certificatomedico,
+ 			profilo_pic,
+ 			certificato_pic) VALUES " .
+			"(null ,'". $input_name ."', '". $input_surname ."', '" . $input_username ."', '" . $input_email ."', '" . $hash ."','" .$terms ."','" 
+		 	. $email_key ."','" . $default_user_level ."','" . $reg_date ."','" . $status ."','','','','','" . $input_phone ."','','','','');"; 
+
+			
+
+
+/*
+		 $prefix ."members ( id,name, surname, username, email , password, terms, email_key, user_level, reg_date, status)" .
+		 " VALUES (null ,'". $input_name ."', '". $input_surname ."', '" . $input_username ."', '" . $input_email ."', '" . $hash ."','" .$terms ."','" 
+		 	. $email_key ."','" . $default_user_level ."','" . $reg_date ."','" . $status ."');"; */
+		if (!mysqli_query($mysqli, $query)) {
+			header('Location: ../error.php');    					
+		}
+
+
+
+	/*	$stmt = $mysqli->prepare("INSERT INTO ".$prefix."members (name,surname, username, email, password, terms, email_key, user_level, reg_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param('sssssssss', $input_name,$input_surname, $input_username, $input_email, $hash, $terms, $email_key, $default_user_level, $reg_date, $status);
+		$stmt->execute();
+		$stmt->close();*/
+
+		$get_settings = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT site_title, site_email FROM ".$prefix."settings WHERE id=1"));
+		$site_title = $get_settings['site_title'];
+		$site_email = $get_settings['site_email'];
+		
+		if($require_email=='1'){
+					//CONFIRM EMAIL ADDRESS - SEND VALIDATION EMAIL	
+					$encoded_email = urlencode($input_email);
+					$to = $input_email;
+					/*$subject = 'Email Verification for '.$site_title;
+
+					$headers = "From: ".$site_email." \r\n";
+					$headers .= "Reply-To: ".$site_email." \r\n";
+					$headers .= "MIME-Version: 1.0\r\n";
+					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+					
+					mail($to, $subject, $message, $headers);*/
+
+
+					$to = $input_email;
+					$email = "oltremare@triosoft.it";
+					$message = '<html><body>';
+					$message .= "<h4>Hello ".ucwords($fullname).",</h4>";
+					$message .= "<p>We would like to welcome you to ".$site_title.".  Your temporary login information is located below:<br><br>";
+					$message .= "Username: ".$input_username."<br>Password: ".$pw."<br>";
+					$message .= '<a href="http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -4).'/login.php">http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -5).'/login.php</a>';
+					$message .= '<h4>Thank you!<br>'.$site_title.'</h4>';
+					$message .= "</body></html>";
+					$mail = new PHPMailer();
+					$mail->IsSMTP();
+					$mail->Host = "mail.triosoft.it";  // specify main and backup server
+					$mail->SMTPAuth = true;     // turn on SMTP authentication
+					$mail->Username = "oltremare@triosoft.it";  // SMTP username
+					$mail->Password = "OlTrE2016?"; // SMTP password
+					$mail->SMTPAuth = true;     // turn on SMTP authentication
+					$mail->Username = "oltremare@triosoft.it";  // SMTP username
+					$mail->Password = "OlTrE2016?"; // SMTP password
+					$mail->From = $email;
+					$mail->AddAddress($to, "OLTREMARE");
+					$mail->WordWrap = 50;
+					$mail->IsHTML(true);
+					$mail->Subject = "'Verifica la tua Email - '.$site_title;";
+					$mail->Body    = $message;
+					$mail->AltBody = $message;
+
+					if(!$mail->Send())
+					{
+					   echo "Message could not be sent. <p>";
+					   echo "Mailer Error: " . $mail->ErrorInfo;
+					   exit;
+					}
+
+					header('Location: ../email/send_email.php');
+
+					exit();
+
+
+
+
+				}
+		
+					//TEMP PASSWORD EMAIL
+					/*$to = $input_email;
+					$subject = 'Get Started using '.$site_title;
+
+					$headers = "From: ".$site_email." \r\n";
+					$headers .= "Reply-To: ".$site_email." \r\n";
+					$headers .= "MIME-Version: 1.0\r\n";
+					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+					$message = '<html><body>';
+					$message .= "<h4>Hello ".ucwords($fullname).",</h4>";
+					$message .= "<p>We would like to welcome you to ".$site_title.".  Your temporary login information is located below:<br><br>";
+					$message .= "Username: ".$input_username."<br>Password: ".$pw."<br>";
+					$message .= '<a href="http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -4).'/login">http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -5).'/login</a>';
+					$message .= '<h4>Thank you!<br>'.$site_title.'</h4>';
+					$message .= "</body></html>";
+					mail($to, $subject, $message, $headers); */
+
+
+					$to = $input_email;
+					$email = "oltremare@triosoft.it";
+					$message = '<html><body>';
+					$message .= "<h4>Hello ".ucwords($fullname).",</h4>";
+					$message .= "<p>We would like to welcome you to ".$site_title.".  Your temporary login information is located below:<br><br>";
+					$message .= "Username: ".$input_username."<br>Password: ".$pw."<br>";
+					$message .= '<a href="http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -4).'/login.php">http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -5).'/login.php</a>';
+					$message .= '<h4>Thank you!<br>'.$site_title.'</h4>';
+					$message .= "</body></html>";
+					
+					$mail = new PHPMailer();
+
+					// set mailer to use SMTP
+					$mail->IsSMTP();
+					                            // set mailer to use SMTP
+					$mail->Host = "mail.triosoft.it";  // specify main and backup server
+					$mail->SMTPAuth = true;     // turn on SMTP authentication
+					$mail->Username = "oltremare@triosoft.it";  // SMTP username
+					$mail->Password = "OlTrE2016?"; // SMTP password
+					// As this email.php script lives on the same server as our email server
+					// we are setting the HOST to localhost
+					//$mail->Host = "localhost";  // specify main and backup server
+
+					$mail->SMTPAuth = true;     // turn on SMTP authentication
+
+					// When sending email using PHPMailer, you need to send from a valid email address
+					// In this case, we setup a test email account with the following credentials:
+					// email: send_from_PHPMailer@bradm.inmotiontesting.com
+					// pass: password
+					$mail->Username = "oltremare@triosoft.it";  // SMTP username
+					$mail->Password = "OlTrE2016?"; // SMTP password
+
+					// $email is the user's email address the specified
+					// on our contact us page. We set this variable at
+					// the top of this page with:
+					// $email = $_REQUEST['email'] ;
+					$mail->From = $email;
+
+					// below we want to set the email address we will be sending our email to.
+					$mail->AddAddress($to, "OLTREMARE");
+
+					// set word wrap to 50 characters
+					$mail->WordWrap = 50;
+					// set email format to HTML
+					$mail->IsHTML(true);
+
+					$mail->Subject = "'Verifica la tua Email - '.$site_title;";
+
+					// $message is the user's message they typed in
+					// on our contact us page. We set this variable at
+					// the top of this page with:
+					// $message = $_REQUEST['message'] ;
+					$mail->Body    = $message;
+					$mail->AltBody = $message;
+
+					if(!$mail->Send())
+					{
+					   echo "Message could not be sent. <p>";
+					   echo "Mailer Error: " . $mail->ErrorInfo;
+					   exit;
+					}
+
+					header('Location: ../email/send_email.php');
+
+					exit();
+
+
+
+
+		$_SESSION['action_added']='1';
+		header('Location: ../user-management.php');
+	}else{
+
+		header('Location: ../email-presente.php');
+		exit;
+
+		//header('Location: ../user-management.php?error=add');
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$sql = "INSERT INTO cv_recapiti(id_utente, nome, cognome,email,telefono) SELECT id_utente,name as nome,surname as cognome, email ,numtelefono as telefono FROM cv_members WHERE id_utente = " .$id_utente;
+					if ($mysqli->query($sql) === TRUE)
+					{
+						 //se tutto è andato a buon fine invio email
+						$get_settings = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT site_title, site_email FROM ".$prefix."settings WHERE id=1"));
+						$site_title = $get_settings['site_title'];
+						$site_email = $get_settings['site_email'];
+						if($require_email=='1')
+						{
+							$to = $input_email;
+							$email = "oltremare@triosoft.it";
+							$message = $site_email
+							$mail = new PHPMailer();
+							$mail->IsSMTP();
+							$mail->Host = "mail.triosoft.it";  // specify main and backup server
+							$mail->SMTPAuth = true;     // turn on SMTP authentication
+							$mail->Username = "oltremare@triosoft.it";  // SMTP username
+							$mail->Password = "OlTrE2016?"; // SMTP password
+							$mail->SMTPAuth = true;     // turn on SMTP authentication
+							$mail->Username = "oltremare@triosoft.it";  // SMTP username
+							$mail->Password = "OlTrE2016?"; // SMTP password
+							$mail->From = $email;
+							$mail->AddAddress($to, "OLTREMARE");
+							$mail->WordWrap = 50;
+							$mail->IsHTML(true);
+							$mail->Subject = "'Verifica la tua Email - '".$site_title;;
+							$mail->Body    = $message;
+							$mail->AltBody = $message;
+
+							if(!$mail->Send())
+							{
+							   echo "Message could not be sent. <p>";
+							   echo "Mailer Error: " . $mail->ErrorInfo;
+							   exit;
+							}
+
+							header('Location: ../email/send_email.php');
+
+							exit();
+
+						}
+						//TEMP PASSWORD EMAIL
+					/*$to = $input_email;
+					$subject = 'Get Started using '.$site_title;
+
+					$headers = "From: ".$site_email." \r\n";
+					$headers .= "Reply-To: ".$site_email." \r\n";
+					$headers .= "MIME-Version: 1.0\r\n";
+					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+					$message = '<html><body>';
+					$message .= "<h4>Hello ".ucwords($fullname).",</h4>";
+					$message .= "<p>We would like to welcome you to ".$site_title.".  Your temporary login information is located below:<br><br>";
+					$message .= "Username: ".$input_username."<br>Password: ".$pw."<br>";
+					$message .= '<a href="http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -4).'/login">http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -5).'/login</a>';
+					$message .= '<h4>Thank you!<br>'.$site_title.'</h4>';
+					$message .= "</body></html>";
+					mail($to, $subject, $message, $headers); */
+
+					$fullname = $input_name ." ".$input_surname;
+
+					$to = $input_email;
+					$email = "oltremare@triosoft.it";
+					$message = '<html><body>';
+					$message .= "<h4>Ciao ".ucwords($fullname).",</h4>";
+					$message .= "<p>Benvenuto  ".$site_title.".  Le tue credenziali temporanee le trovi sotto:<br><br>";
+					$message .= "Nickname: ".$input_username."<br>Password: ".$pw."<br>";
+					$message .= '<a href="http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -4).'/login.php">http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -5).'/login.php</a>';
+					$message .= '<h4>Grazie!<br>'.$site_title.'</h4>';
+					$message .= "</body></html>";
+					
+					$mail = new PHPMailer();
+
+					// set mailer to use SMTP
+					$mail->IsSMTP();
+					                            // set mailer to use SMTP
+					$mail->Host = "mail.triosoft.it";  // specify main and backup server
+					$mail->SMTPAuth = true;     // turn on SMTP authentication
+					$mail->Username = "oltremare@triosoft.it";  // SMTP username
+					$mail->Password = "OlTrE2016?"; // SMTP password
+					// As this email.php script lives on the same server as our email server
+					// we are setting the HOST to localhost
+					//$mail->Host = "localhost";  // specify main and backup server
+
+					$mail->SMTPAuth = true;     // turn on SMTP authentication
+
+					// When sending email using PHPMailer, you need to send from a valid email address
+					// In this case, we setup a test email account with the following credentials:
+					// email: send_from_PHPMailer@bradm.inmotiontesting.com
+					// pass: password
+					$mail->Username = "oltremare@triosoft.it";  // SMTP username
+					$mail->Password = "OlTrE2016?"; // SMTP password
+
+					// $email is the user's email address the specified
+					// on our contact us page. We set this variable at
+					// the top of this page with:
+					// $email = $_REQUEST['email'] ;
+					$mail->From = $email;
+
+					// below we want to set the email address we will be sending our email to.
+					$mail->AddAddress($to, "OLTREMARE");
+
+					// set word wrap to 50 characters
+					$mail->WordWrap = 50;
+					// set email format to HTML
+					$mail->IsHTML(true);
+
+					$mail->Subject = "'Verifica la tua Email - '.$site_title;";
+
+					// $message is the user's message they typed in
+					// on our contact us page. We set this variable at
+					// the top of this page with:
+					// $message = $_REQUEST['message'] ;
+					$mail->Body    = $message;
+					$mail->AltBody = $message;
+
+					if(!$mail->Send())
+					{
+					   echo "Message could not be sent. <p>";
+					   echo "Mailer Error: " . $mail->ErrorInfo;
+					   exit;
+					}
+
+					header('Location: ../email/send_email.php');
+
+					exit();
+
+					$_SESSION['action_added']='1';
+					header('Location: ../user-management.php');
+
+				

@@ -1,0 +1,65 @@
+<!-- Form used to add new entries of employee in database -->
+<form class="form-horizontal alert alert-warning" name="frmArmatore" id="frmArmatore" ng-submit="addArmatore(empInfo);" hidden>
+<h3 class="text-center">Aggiungi</h3>
+
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Tipo:</label>
+		<div class="col-sm-4"> 
+			<select name="singleSelect" ng-model="empInfo.tipo"  class="form-control" 
+                ng-required="true">
+      			<option value="motore">Motore</option>
+      			<option value="vela">Vela</option>
+    		</select>
+    	 	<!--<tt>singleSelect = {{empInfo.tipo}}</tt> -->
+    	</div>
+	</div>
+	
+     <div class="form-group">
+      <label for="country" class="col-sm-2 control-label">Modello </label>
+      <div class="col-sm-4">             
+        <select ng-model="empInfo.modello"                
+                ng-options="obj.id as obj.modello for obj in countries"
+                ng-change="getCountryStates()"
+                class="form-control" 
+                ng-required="true"
+                id="country">
+          <option value="">-- Scegli Modello --</option>
+        </select>      
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="state" class="col-sm-2 control-label">Cantiere </label>
+      <div class="col-sm-4">       
+        <select ng-model="empInfo.cantiere" 
+                ng-options="x.id as x.cantiere for x in sates"
+                ng-change = "getStateCities()"
+                class="form-control"
+                ng-required="true"
+                id="state">
+          <option value="">-- Scegli Cantiere --</option>
+        </select>      
+      </div>
+    </div>
+	
+	<div class="form-group">
+		<label for="state" class="col-sm-2 control-label">Metri </label>
+		 <div class="col-sm-4">   
+    		<input type="text" name="empInfo" class="form-control" ng-model="empInfo.metri" autofocus required />
+    	</div>
+	</div>
+     
+    
+    <div class="form-group">
+      <div class="col-lg-offset-2">
+        <b>name:</b> {{empInfo.nome}}
+        <b>Modello:</b> {{empInfo.modello}}
+        <b>Cantiere:</b> {{empInfo.cantiere}}
+      </div>
+    </div>  
+		<!--  <tt>singleSelect = {{item}}</tt> -->
+	</div>
+	<div class="form-group">
+		<button class="btn btn-warning" ng-disabled="empInfo.$invalid">Aggiungi</button>
+	</div>
+</form>
