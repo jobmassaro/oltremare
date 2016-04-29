@@ -117,12 +117,44 @@ setlocale(LC_MONETARY, 'it_IT');
          {
            $arr[] = $row;
          }
+
+         /*  LOG */
+
+        /*  $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+          $txt =json_encode($sql);
+          fwrite($myfile, $txt);
+          fclose($myfile);
+    /**/
           
-          unlink("sezione/amministrativa/amministrativa.json");
-          $myfile = fopen("sezione/amministrativa/amministrativa.json", "w") or die("Unable to open file!");
+          $myfile = fopen("sezione/infobanca/infobanca.json", "w") or die("Unable to open file!");
           $txt =json_encode($arr);
           fwrite($myfile, $txt);
           fclose($myfile);
+      }else
+      {
+
+         $sql = "INSERT INTO cv_amministrazione (id_utente) " .
+          "SELECT id_utente FROM cv_members WHERE id_utente =" .$uid;
+    
+          $result = $mysqli->query($sql);
+          $arr = array();
+          if(mysqli_num_rows($result) != 0) 
+          {
+           while($row = mysqli_fetch_assoc($result)) 
+           {
+             $arr[] = $row;
+           }
+           $myfile = fopen("sezione/infobanca/infobanca.json", "w") or die("Unable to open file!");
+           $txt =json_encode($arr);
+           fwrite($myfile, $txt);
+           fclose($myfile);
+            
+        }
+
+
+
+
+
       }
   
 
@@ -282,6 +314,35 @@ setlocale(LC_MONETARY, 'it_IT');
            }            
 
    
+
+          //TAB STAMPA
+          $sql = "SELECT g.name, g.surname, s.fiv, s.fiv_scadenza, s.tess_uisp, s.uisp_numero, f.abilitazione, f.attivita, f.scuola, f.sede, f.anno  FROM oltremare.cv_socio as s, oltremare.cv_generale as g, oltremare.cv_formazione_utente as f where s.id_utente =" .$uid . " and f.id_utente =" .$uid . " and g.id_utente =" .$uid ;
+          $result = $mysqli->query($sql);
+          $arr = array();
+          $arr1 = array();
+          if(mysqli_num_rows($result) != 0) 
+           {
+             while($row = mysqli_fetch_assoc($result)) 
+             {
+                $arr1[] = $row;
+                $arr = $row['name'] .';'. $row['surname'] .';'.$row['fiv'] .';'.$row['fiv_scadenza'] .';'.$row['tess_uisp'] .';'.$row['uisp_numero'] .';'.$row['abilitazione']. ';' . $row['attivita'] . ';' .$row['scuola'] . ';' .$row['sede']. ';' .$row['anno'];
+                
+
+             }
+
+            /* PER STAMPA*/
+            $myfile = fopen("sezione/stampa/cv.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, $arr);
+            fclose($myfile);
+
+            //PER CARICAMENTO VIDEO
+            unlink("sezione/stampa/cv.json");
+            $myfile = fopen("sezione/stampa/cv.json", "w") or die("Unable to open file!");
+            $txt =json_encode($arr1);
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
+           }
    
     //echo $json_info = json_encode($arr);
 
@@ -309,6 +370,10 @@ setlocale(LC_MONETARY, 'it_IT');
     <!-- SweetAlert Plugin -->
     <link href="assets/css/plugins/sweetalert.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+     <link rel="stylesheet" href="node_modules/flat-datepicker/ng-flat-datepicker.css">
+      <link href="http://cdn-na.infragistics.com/igniteui/2016.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2016.1/latest/css/structure/infragistics.css" rel="stylesheet" />
+
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -361,7 +426,7 @@ setlocale(LC_MONETARY, 'it_IT');
       <md-tab label="Info Bancarie">
         <md-content class="md-padding">
           <h1 class="md-display-2">Amministrativa</h1>
-          <div ng-include src="'sezione/amministrativa/index.php'"></div>
+          <div ng-include src="'sezione/infobanca/index.php'"></div>
         </md-content>
       </md-tab>
         <md-tab label="Contabilita">
@@ -410,25 +475,28 @@ setlocale(LC_MONETARY, 'it_IT');
  <script src="node_modules/angular-aria/angular-aria.js"></script>
  <script src="node_modules/angular-material/angular-material.js"></script>
  <script src="node_modules/moment/moment.js"></script>
-<script type="text/javascript">
-  
-var app = angular.module('MyApp',['ngMaterial']);
+ <script src="node_modules/flat-datepicker/ng-flat-datepicker.js"></script>
 
-/**
-Copyright 2016 Google Inc. All Rights Reserved. 
-Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
-**/
+    <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
-</script>
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="http://cdn-na.infragistics.com/igniteui/2016.1/latest/js/infragistics.core.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2016.1/latest/js/infragistics.lob.js"></script>
+
+  <script type="text/javascript">
+    var app = angular.module('MyApp',['ngMaterial','ngFlatDatepicker']);
+  </script>
 <!-- SEZIONE PAGINE -->
 <script src="sezione/generale/data/generale.js"></script>
 <script src="sezione/socio/socio.js"></script>
-<script src="sezione/amministrativa/amministrativa.js"></script>
+<script src="sezione/infobanca/infobanca.js"></script>
 <script src="sezione/barche/barche.js"></script>
 <script src="sezione/formazione/formazione.js"></script>
 <script src="sezione/contabilita/contabilita.js"></script>
 <script src="sezione/recapiti/recapiti.js"></script>
-
+<script src="sezione/stampa/stampa.js"></script>
 
 </body>
 </html>

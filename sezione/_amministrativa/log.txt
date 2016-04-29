@@ -1,0 +1,1 @@
+"UPDATE cv_amministrazione  SET id_utente ='7',banca ='ewqqeqwewq',abi='',cab='',cin='',cc='',iban='',carta_credito='',data_scadenza='' WHERE id=6 AND id_utente=7"

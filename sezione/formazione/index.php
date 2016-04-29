@@ -14,7 +14,7 @@
 </style>
 
 <div class="row">
-    <div class="table-responsive" ng-controller="FormazioneCtrl" >
+    <div class="table-responsive" ng-controller="FormazioneCtrl" id="formazioneForm">
         <div class="form-group">
             <div ng-include src="'sezione/formazione/templates/editFormazione.html'"></div>
 

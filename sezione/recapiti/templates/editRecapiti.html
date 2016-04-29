@@ -1,0 +1,51 @@
+<style>
+    #generale
+    {
+        background-color:white; 
+        font-size:1.5em 
+    }
+
+    
+</style>
+<div ng-repeat="detail in details">
+<form class="form-horizontal alert alert-warning" id="updateRecapiti" ng-submit="updateRecapiti(detail)" hidden>
+<h3 class="text-center">Aggiornameto</h3>
+    <div class="form-group">
+        <label for="Nome">Nome:</label>
+        <input type="text" class="form-control" ng-model="detail.nome" value="{{detail.nome}}">
+    </div>
+    <div class="form-group">
+        <label for="Cognome">Cognome:</label>
+        <input type="text" class="form-control" ng-model="detail.cognome" value="{{detail.cognome}}">
+    </div>
+    <div class="form-group">
+        <label for="telefono">Telefono:</label>
+        <input type="text" class="form-control" ng-model="detail.telefono" value="{{detail.telefono}}">
+    </div>
+    
+    <div class="form-group">
+        <label for="cellulare">Cellulare:</label>
+        <input type="text" class="form-control" ng-model="detail.cellulare" value="{{detail.cellulare}}">
+    </div>
+    <div class="form-group">
+        <label for="Indirizzo">Email:</label>
+        <input type="text" class="form-control" ng-model="detail.email" value="{{detail.email}}">
+    </div>
+    <div class="form-group">
+        <label for="Numcivico">Whatsapp:</label>
+        <input type="text" class="form-control" ng-model="detail.whatsapp" value="{{detail.whatsapp}}">
+    </div>
+    <div class="form-group">
+        <label for="Cap">Facebook:</label>
+        <input type="text" class="form-control" ng-model="detail.facebook" value="{{detail.facebook}}">
+    </div>
+    <div class="form-group">
+        <label for="Citta">Twitter:</label>
+        <input type="text" class="form-control" ng-model="detail.twitter" value="{{detail.twitter}}">
+    </div>
+   
+    <div class="form-group">
+        <button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateMsg(detail.id)">Aggiorna</button>
+    </div>
+</form>
+</div>

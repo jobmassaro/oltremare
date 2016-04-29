@@ -1,1 +1,63 @@
-editCorso.html
+ <style type="text/css">
+        .label-container {
+            margin: 5px 0;
+        }
+
+        span[id^="combo"] {
+            margin-right: 15px;
+        }
+
+        #state, #stateCascading {
+            display: none;
+        }
+
+        .group-container {
+            padding: 10px;
+            margin-bottom: 10px;
+            clear: both;
+        }
+
+        .group-title {
+            font-weight: bold;
+        }
+
+        .comboGroup {
+            float: left;
+        }
+
+        .overHidden {
+            overflow: hidden;
+        }
+</style>
+<form class="form-horizontal alert alert-warning"  id="editCorso" ng-submit="aggCorso(corso)" hidden>
+
+   <div class="form-group">
+      <label for="tipo"  class="col-sm-2 control-label">Nome Corso:</label>
+         <div class="col-sm-4">
+             <input type="text" class="form-control" ng-model="corso.nomecorso" value="{{corso.nomecorso}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tipo"  class="col-sm-2 control-label">Attivo:</label>
+         <div class="col-sm-4">
+             <select name="singleSelect" ng-model="corso.attivo" class="form-control">
+                <option value="si" >SI</option>
+                <option value="no" >NO</option>
+            </select>
+        </div>
+    </div>
+ <div class="form-group">
+    <button class="btn btn-warning" ng-disabled="corso.$invalid">Aggiorna</button>
+  </div>
+
+    
+
+
+
+
+
+    </form>
+
+</div>
+

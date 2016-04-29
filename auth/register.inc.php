@@ -98,12 +98,24 @@ if(isset($_POST['name'], $_POST['surname'], $_POST['username'])){
 			$reg_date = date("Y-m-d H:i:s");
 		
 			$hash = password_hash($pw, PASSWORD_DEFAULT, array("cost" => 10));
-				
-			$sql = "INSERT INTO ". $prefix ."members (id,username, name, surname, email, password, terms, email_key, user_level, reg_date, status, plan_id) VALUES (null ,'" .$username ."', '" . $name ."', '" . $surname ."','" .$email ."','" .$hash ."','" .$terms ."','" . $email_key ."','" . $default_user_level ."','" . $reg_date ."','" . $int_status ."','". $plan ."')";
+
+
+			$sql = "SELECT max(id_utente)+5 as max  FROM cv_members";
+			$result = $mysqli->query($sql);
+			while($row = mysqli_fetch_assoc($result)) 
+        	{
+        		$id_utente = $row['max'];
+        	}
+
+			$sql = "INSERT INTO ". $prefix ."members (id, id_utente,username, name, surname, email, password, terms, email_key, user_level, reg_date, status, plan_id) VALUES (null ," .$id_utente .",'".$username ."', '" . $name ."', '" . $surname ."','" .$email ."','" .$hash ."','" .$terms ."','" . $email_key ."','" . $default_user_level ."','" . $reg_date ."','" . $int_status ."','". $plan ."')";
 			
 			if (!mysqli_query($mysqli, $sql)) {
 					header('Location: ../error.php');    					
 				}
+
+
+
+
 			/*	//printf($sql );
 				if($insert_stmt = $mysqli->prepare("INSERT INTO ".$prefix."members (username, name, surname, email, password, terms, email_key, user_level, reg_date, status, plan_id) VALUES (? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 				$insert_stmt->bind_param('ssssss',$username, $name, $surname, $email, $hash, $terms, $email_key, $default_user_level, $reg_date, $int_status, $plan);

@@ -38,7 +38,8 @@
 				</li>
 				
 				<!-- Start My Account Dropdown -->
-				<li class="dropdown account-dropdown">
+				<li class="dropdown account-dropdown"  style="color:red">
+
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<?php avatar($user_id);?>
 						<span class="navbar-user"><span><?php echo ucwords($user_name);?></span></span>
@@ -50,6 +51,7 @@
 						</li>
 						
 						<?php 
+							
 							$lang_u = $lang['USER_MANAGEMENT'];
 							$lang_a = $lang['ADMIN_SETTINGS'];
 							admin_control($admin_user, $lang_u, $lang_a);

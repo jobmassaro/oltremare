@@ -8,9 +8,9 @@
     
 </style>
 
-<form class="col-md-12 well">
 <div class="row"  ng-controller="RecapitiCtrl" >
-    <div class="col-md-6" ng-repeat="detail in details" >
+    <div ng-repeat="detail in details">
+    <div class="col-md-6"  >
         <div class="form-group">
            <div class="well well-sm" id="generale">Nome: &nbsp;<strong>{{detail.nome}}</strong></div>
         </div>
@@ -40,4 +40,14 @@
          
          
     </div>
-</form>
+     <div class="col-md-2">
+        <div class="form-group">
+           <button class="well well-sm" ng-click="editRecapiti(detail)" id="edit">Modifica <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+        </div>
+    </div>
+     <div class="col-md-4">
+            <div ng-include src="'sezione/recapiti/templates/editRecapiti.html'"></div>
+        </div>
+    </div>  
+</div>
+</div>

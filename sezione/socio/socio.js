@@ -4,6 +4,11 @@ app.controller("SocioCtrl",function($scope, $http)
 	getSocio();
 	$('#socioForm').css('display', 'none');
 
+	$scope.datepickerConfig = {
+            allowFuture: false,
+            dateFormat: 'DD/MM/YYYY'
+        };
+
 
 	function getSocio(){
 		$http.get('sezione/socio/socio.json').success(function(data){
@@ -29,8 +34,8 @@ app.controller("SocioCtrl",function($scope, $http)
 		var datascadenzapatente  = moment(info.data_scadenza_patente).format('MM/DD/YYYY');
 
 			$http.post('sezione/socio/updateSocio.php',{"id": info.id, "id_utente":info.id_utente, "tess_uisp":info.tess_uisp,
-				"uisp_numero":info.uisp_numero,"datarilascio":dataRilascio,"certificato":info.certificato,
-				 "patente":info.patente, "patente_tipo":info.patente_tipo,"data_scadenza_patente": datascadenzapatente, "fiv_scadenza":info.scadenzaFIV,
+				"uisp_numero":info.uisp_numero,"datarilascio":dataRilascio,"certificato":info.certificato,"foto_cert":info.foto_cert,"fiv":info.fiv,"fiv_certificato": info.fiv_certificato,
+				 "patente":info.patente, "patente_tipo":info.patente_tipo,"data_scadenza_patente": datascadenzapatente, "fiv_scadenza":scadenzaFIV,
 			}).success(function(data){
 			
 

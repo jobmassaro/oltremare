@@ -10,8 +10,9 @@
 	</div>
 	
 	<div class="form-group">
-		<label for="Datanascita">Data di rilascio UISP:</label>
-		<md-datepicker ng-model="socioUser.datarilascio" md-placeholder="{{socioUser.datarilascio}}"></md-datepicker>
+			<label for="Datanascita">Data di rilascio UISP:</label>
+		<!--<md-datepicker ng-model="socioUser.datarilascio" md-placeholder="{{socioUser.datarilascio}}"></md-datepicker>-->
+		  <input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="socioUser.datarilascio">
 		<!--<input type="text" class="form-control" ng-model="currentUser.data_nascita" value="{{currentUser.data_nascita}}">-->
 	</div>
 
@@ -29,7 +30,8 @@
 	</div>
 	<div class="form-group">
 		<label for="Citta">Scadenza F.I.V:</label>
-		<md-datepicker ng-model="socioUser.fiv_scadenza" md-placeholder="{{socioUser.fiv_scadenza}}"></md-datepicker>
+		<input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="socioUser.fiv_scadenza">
+		<!--<md-datepicker ng-model="socioUser.fiv_scadenza" md-placeholder="{{socioUser.fiv_scadenza}}"></md-datepicker>-->
 	</div>
 	<div class="form-group">
 		<label for="Provincia">Certificato F.I.V:</label>
@@ -49,7 +51,8 @@
 	
 	<div class="form-group">
 		<label for="Datanascita">Data di scadenza della patente:</label>
-		<md-datepicker ng-model="socioUser.data_scadenza_patente" md-placeholder="{{socioUser.data_scadenza_patente}}"></md-datepicker>
+		<!--<md-datepicker ng-model="socioUser.data_scadenza_patente" md-placeholder="{{socioUser.data_scadenza_patente}}"></md-datepicker>-->
+		 <input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="socioUser.data_scadenza_patente">
 	</div>
 
 	<div class="form-group">

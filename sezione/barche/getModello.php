@@ -4,7 +4,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "developer";
-	$dbname = "UOLTRE";
+	$dbname = "oltremare";
 
 	$mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -34,16 +34,16 @@
 	$arr = array();
 
 	if(mysqli_num_rows($result) != 0) {
-		$i = 1;
+		$i = 1; $cnt = 0;
 	while($row = mysqli_fetch_assoc($result)) {
 		if($i != $rowcount)
 		{
-			//$arr[] = $row;
-			$arr1 .= '{ "id":"' .$row['id'] .'","id_utente":"'. $row['id_utente'] . '","id_modello":"'.$row['id_modello'] .'","nome_cantiere":"' .$row['nome_cantiere'] .'", "Loa":"' .$row['Loa'] .'","cantiere":"' .$row['cantiere'] .'"},';
+			$arr1 .= '{ "id":"' .$row['id'] .'","id_utente":"'. $row['id_utente'] . '","id_modello":"'.$row['id_modello'] .'","nome_cantiere":"' .$row['nome_cantiere'] .'", "Loa":"' .$row['Loa'] .'","modello":"'. $row['modello'].'", "cantiere":"' .$row['cantiere'] .'"},';
 			$i++;
 		}else{
-			$arr1 .= '{ "id":"' .$row['id'] .'","id_utente":"'. $row['id_utente'] . '","id_modello":"'.$row['id_modello'] .'","nome_cantiere":"' .$row['nome_cantiere'] .'", "Loa":"' .$row['Loa'] .'","cantiere":"' .$row['cantiere'] .'"}';
+			$arr1 .= '{ "id":"' .$row['id'] .'","id_utente":"'. $row['id_utente'] . '","id_modello":"'.$row['id_modello'] .'","nome_cantiere":"' .$row['nome_cantiere'] .'", "Loa":"' .$row['Loa'] .'","modello":"'. $row['modello'].'", "cantiere":"' .$row['cantiere'] .'"}';
 			$i++;
+
 		}
 			
 			
@@ -51,5 +51,9 @@
 	
 }
 $arr1 .="]"; 
-echo $arr1;
+$myfile = fopen("modello.json", "w") or die("Unable to open file!");
+$txt =$arr1;
+fwrite($myfile, $txt);
+fclose($myfile);
+//echo $arr1;
 ?>

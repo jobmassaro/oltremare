@@ -36,6 +36,11 @@ $sposato = mysqli_real_escape_string($mysqli, $data->sposato);
 $figli = mysqli_real_escape_string($mysqli, $data->figli);
 $professione = mysqli_real_escape_string($mysqli, $data->professione);
 
+
+
+$sql = "UPDATE cv_members SET name = '" .$name ."',surname='" .$surname ."' WHERE id_utente = " .$id_utente;
+mysqli_query($mysqli, $sql);
+
 // mysqli query to insert the updated data
 $query = "UPDATE cv_generale  SET name ='" . $name ."',surname ='" . $surname ."',username='" . $username ."',data_nascita='" .$data_nascita ."',via='" .$via .
 "',civico='" .$civico ."',cap='" .$cap ."',comune='" .$comune ."',provincia='". $provincia."',cod_fiscale='".$cod_fiscale."',cod_piva='" .$cod_piva ."',sesso='" .$sesso ."', sposato='" .$sposato. "',figli='" .$figli."',professione='" . $professione .

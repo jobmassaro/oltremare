@@ -8,505 +8,521 @@ list($timeout_enabled, $warning_title, $warning_message, $inactivity_timer, $ina
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?php echo $meta_description;?>">
     <meta name="author" content="">
-
     <title><?php echo $meta_title;?></title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="assets/css/base.css" rel="stylesheet">
-    
-        <!-- Font Awesome Icons -->
-        <link href="assets/fonts/css/fa.css" rel="stylesheet">
-        <!-- Webfont -->
-        <link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <!-- SweetAlert Plugin -->
-        <link href="assets/css/plugins/sweetalert.css" rel="stylesheet" media="all">
-        <!-- Datatables Plugin -->
-        <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css" rel="stylesheet" media="all">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- Font Awesome Icons -->
+    <link href="assets/fonts/css/fa.css" rel="stylesheet">
+    <!-- Webfont -->
+    <link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!-- SweetAlert Plugin -->
+    <link href="assets/css/plugins/sweetalert.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+     <link rel="stylesheet" href="node_modules/flat-datepicker/ng-flat-datepicker.css">
+      <link href="http://cdn-na.infragistics.com/igniteui/2016.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2016.1/latest/css/structure/infragistics.css" rel="stylesheet" />
+
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
- <style>
-form#contact  {font-family:arial;font-size:100%;color:#000;}
-form#contact label  {float:left;display:block;margin:3px 0;clear:both;}
-form#contact input  {color:#000;margin:0 0 7px 0;border:1px solid #d8d8d8;width:220px;float:right;-moz-border-radius:9px;-webkit-border-radius:9px;background: url('gradient_white.png') repeat-x top left #efefef;padding:3px 10px;}
- 
-form#contact select {color:#000;margin:0 0 7px 0;border:1px solid #d8d8d8;width:240px;float:right;-moz-border-radius:9px;-webkit-border-radius:9px;background: url('gradient_white.png') repeat-x top left #efefef;padding:3px 5px 3px 10px;}
-form#contact option {display:block;color:#666;}
- 
-form#contact textarea {color:#666; float:right;font-size:110%;font-family:arial;height:80px;border:1px solid #d8d8d8;width:220px;-moz-border-radius:12px;-webkit-border-radius:12px;background: url('gradient_white.png') repeat-x top left #efefef;padding:2px 10px;margin-bottom:10px;}
-#send {background: url('gradient_black.png') repeat-x top left #a80329; clear:both;-moz-border-radius:15px;-webkit-border-radius:15px;border:0;cursor:pointer;color:#fff;margin-top:15px;float:right;font-weight:bold;font-size:110%;padding:5px 15px;}
-.faulty_field{background:#fff4f4 !important;color:#ff0000;border:1px solid #ff0000 !important;}
-label span {color:#ff0000;font-size:85%; }
- 
-#main{ width:500px; height:400px; margin:0 auto; padding:0;}
-</style>
+    <style type="text/css">
+.tabsdemoDynamicHeight md-content {
+  background-color: transparent !important; }
+  .tabsdemoDynamicHeight md-content md-tabs {
+    background: #f6f6f6;
+    border: 1px solid #e1e1e1; }
+    .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+      background: white; }
+  .tabsdemoDynamicHeight md-content h1:first-child {
+    margin-top: 0; }
 
+    </style>
 </head>
-
 <body>
 
-<?php include('assets/comp/top-nav.php');?>
-
-<div id="page-content-wrapper">
-    <div class="container-fluid">
-            <div class="row">
-                <!-- Start Panel -->
-                <div class="col-lg-12">
-                    <div class="panel">
-                        <div class="panel-heading panel-warning">
-                            <span class="title">Informazioni Utente</span>
-                        </div>
-                                                <br><br>
-                                                <?php
-
-                                                    $fname = '';
-                                                    $lname = '';
-                                                    $username = '';
-                                                    $email = '';
-
-                                                    
-                                                    if($user_level=='2')
-                                                    {
-                                                        if ($_SERVER['REQUEST_METHOD'] === 'POST') 
-                                                        {
-                                                            if(!empty($_POST['fname']))
-                                                            {
-                                                                $fname = $_POST['fname'];
-                                                                echo $_POST['fname'];
-                                                            }
-
-                                                            if(!empty($_POST['lname']))
-                                                            {
-                                                                $lname = $_POST['lname'];
-                                                                echo $_POST['fname'];
-                                                            
-                                                            }
-
-                                                            if(!empty($_POST['username']))
-                                                            {
-                                                                $username = $_POST['username'];
-                                                                echo $_POST['username'];
-                                                            }
-
-                                                            if(!empty($_POST['email']))
-                                                            {
-                                                                $email = $_POST['email'];
-                                                                echo $email;    
-                                                            }
-
-
-
-
-
-
-
-
-
-
-                                                        }
-
-                                                        $query = "SELECT * FROM ".$prefix."members WHERE  email = '" .$user_email ."'  LIMIT 1";
-                                                    
-                                                        if ($result = $mysqli->query($query))
-                                                        {
-                                                                while($row = $result->fetch_assoc())
-                                                                {
-                                                                    $fname = $row['name'];
-                                                                    $lname = $row['surname'];
-                                                                    $username = $row['username'];
-                                                                    $email = $row['email'];
-
-                                                                        
-                                                                }
-                                                        }
-
-                                                        $query = "SELECT * FROM ".$prefix."profile_complete WHERE idmember = " .$uid ." LIMIT 1";
-                                                        if($result = $mysqli->query($query))
-                                                        {
-                                                            $num_results = mysqli_num_rows($result);
-                                                            if(!$num_results == 0 || !$num_results == null)
-                                                            {
-                                                                while($row = $result->fetch_assoc())
-                                                                {
-                                                                    $codfiscale = $row['codicefiscale'];
-                                                                    $partitaiva  = $row['partitaiva'];
-                                                                    $datanascita  = $row['datanascita'];
-                                                                    $stato = $row['stato'];
-                                                                    $sposato =$row['sposato'];
-                                                                    $professione =$row['professione'];
-                                                                    $sesso = $row['sesso'];
-                                                                    $via =  $row['via'];
-                                                                    $civico = $row['civico'];
-                                                                    $cap  = $row['cap'];
-                                                                    $comune  =  $row['comune'];
-                                                                    $provincia = $row['provincia'];
-                                                                    $numtelefono = $row['numtelefono'];
-                                                                    $mobile =  $row['mobile'];
-                                                                    $tshirt = $row['tshirt'];
-                                                                    $caparra = $row['caparra'];
-                                                                    $iban = $row['iban'];
-                                                                    $numerocartacredito =  $row['numerocartacredito'];
-                                                                    $codicefornitore = $row['codicefornitore'];
-                                                                    $attivitafornitore = $row['attivitafornitore'];
-                                                                    $numuisp =  $row['numuisp'];
-                                                                    $datarilascio = $row['datarilascio'];
-                                                                    $certificatomedico = $row['certificatomedico'];
-                                                                    $uploadcertificato = $row['uploadcertificato']; 
-                                                                    $datarilasciomedico = $row['datarilasciomedico'];
-                                                                    $prezzotessera = $row['prezzotessera']; 
-                                                                    $pagatoil = $row['pagatoil'];                
-                                                                    $modalitapagamento = $row ['modalitapagamento'];
-                                                                    $fattura = $row['fattura'];
-                                                                    $numfattura = $row['numfattura'];                           
-                                                                    $datafattura  =$row['datafattura'];                         
-                                                             
-                                                                }
-                                                                
-                                                            }
-                                                        }   
-
-
-                                                    }
+<!-- Start Top Navigation -->
+  <?php include('members/top-nav.php');?>
+    <!-- Start Main Wrapper --> 
+    <!-- Side Wrapper -->
+        <div id="side-wrapper">
+            <ul class="side-nav">
+                <?php include('assets/comp/side-nav.php');?>
+            </ul>
+        </div><!-- End Main Navigation --> 
         
+              <?php include('assets/comp/stat-boxes.php');?>
 
 
-                                                ?>
+<?php
 
-
-
-<form method="POST" action="profile-user.php" id="edit-form">
-<div class="container">
-<div class="col-sm-12">
-    <div class="row">
-    </div>  
-</div>
-<!-- -->
-
-<div id="wrapper">
-    <input id="fileUpload" type="file" multiple />
-    <br />
-    <div id="image-holder"></div>
-</div>
-
-
-<!-- -->
-
-
-<div class="form-group col-sm-3">
-<div class="list-group">
-  <a href="#">
-    <legend><span>Dati</span></legend>
-  </a>
-    <label for="inputFName">Nome:</label>
-    <input type="text" class="form-control" required="required" id="inputFName" value="<?php echo !empty($fname)?$fname:''; ?>" name="fname" placeholder="Nome">
-    <span class="help-block"></span>
-    
-
-    <label for="lname">Cognome:</label>
-    <input type="text" class="form-control" required="required" id="lname" value="<?php echo !empty($lname)?$lname:''; ?>" name="lname" placeholder="Cognome">
-    <span class="help-block"></span>
-    
-    <label for="username">Username:</label>
-    <input type="text" class="form-control" required="required" id="username" value="<?php echo !empty($username)?$username:''; ?>" name="username" placeholder="Username">
-    <span class="help-block"></span>
-    
-    <label for="email">Email:</label>
-    <input type="text" class="form-control" required="required" id="email" value="<?php echo !empty($email)?$email:''; ?>" name="email" placeholder="Email">
-    <span class="help-block"></span>
-    
-    <label for="codfiscale">CodiceFiscale:<span>(richiesto)</span></label><a name="codfiscale"></a></label>
-    <input type="text" class="form-control" required id="codfiscale" value="<?php echo !empty($codfiscale)?$codfiscale:'000'; ?>" name="codfiscale" placeholder="CodiceFiscale">
-    <span class="help-block"></span>
-
-    <?php 
-    if($user_level== 1 || $user_level == 4) { ?>
-    <label for="partitaiva">PartitaIva:</label>
-    <input type="text" class="form-control" required="required" id="partitaiva" value="<?php echo !empty($partitaiva)?$partitaiva:'000'; ?>" name="partitaiva" placeholder="Partita Iva">
-    <span class="help-block"></span>
-    <?php } ?>
-
-    <label for="datanascita">Data Nascita:<span>(richiesto)</span></label><a name="datanascita"></a></label><br />
-    <input type="text" id="datanascita" value="<?php echo !empty($datanascita)?$datanascita:''; ?>" name="datanascita" placeholder="Data Nascita" />
-    <div id='log'></div>
-    <span class="help-block"></span>
-
-    <?php 
-
-    $table_name = $prefix . "profile_complete";
-    $column_name = "sesso";
-
-    $query = "SELECT COLUMN_TYPE  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME = '$column_name'";
-    
-        echo "<label for='sesso'>Sesso:</label><br />";
-        echo "<select name=\"$column_name\" id='sesso'>";
-
-            $result = $mysqli->query($query);
-
-    $row = $result->fetch_assoc();
-        $enumList = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
-
-    foreach($enumList as $value)
-     echo "<option value=\"$value\">$value</option>";
-
-    echo "</select><span class='help-block'></span>";
-
-?>
-    <label for="professione">Professione:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="professione" value="<?php echo !empty($professione)?$professione:''; ?>" name="professione" placeholder="professione">
-    <span class="help-block"></span>
-
-
-    </div>
-</div>
-
-
-
-
-
-<div class="form-group col-sm-3">
-    <div class="list-group">
-  <a href="#" class="list-group-item disabled" style="text-align:center;">
-    <b> Dati Personali</b>
-  </a>
-    
-    <label for="via">Via:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="via" value="<?php echo !empty($via)?$via:''; ?>" name="via" placeholder="via">
-    <span class="help-block"></span>
-    
-    <label for="civico">Num.Civico:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="civico" value="<?php echo !empty($civico)?$civico:''; ?>" name="civico" placeholder="numero civico">
-    <span class="help-block"></span>
-
-    <label for="cap">Cap:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="cap" value="<?php echo !empty($cap)?$cap:''; ?>" name="cap" placeholder="cap">
-    <span class="help-block"></span>
-
-    <label for="comune">Comune:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="comune" value="<?php echo !empty($comune)?$comune:''; ?>" name="comune" placeholder="comune">
-    <span class="help-block"></span>
-    
-    <label for="provincia">Provincia:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="provincia" value="<?php echo !empty($provincia)?$provincia:''; ?>" name="provincia" placeholder="provincia">
-    <span class="help-block"></span>
-
-    <?php 
-
-        $table_name = $prefix . "profile_complete";
-        $column_name = "sposato";
-
-        $query = "SELECT COLUMN_TYPE  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME = '$column_name'";
-        
-            echo "<label for='sposato'>Sposato:</label><br />";
-            echo "<select name=\"$column_name\" id='sposato'>";
-
-                $result = $mysqli->query($query);
-
-        $row = $result->fetch_assoc();
-            $enumList = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
-
-        foreach($enumList as $value)
-         echo "<option value=\"$value\">$value</option>";
-
-        echo "</select><span class='help-block'></span>";
-
-    ?>
-
-    
-    <label for="telefono">Telefono:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="numtelefono" value="<?php echo !empty($numtelefono)?$numtelefono:''; ?>" name="numtelefono" placeholder="telefono">
-    <span class="help-block"></span>
-
-    <label for="mobile">Mobile:<span>(richiesto)</span></label><a name="professione"></a></label>
-    <input type="text" class="form-control" required="required" id="inputMobile" value="<?php echo !empty($mobile)?$mobile:''; ?>" name="mobile" placeholder="phone">
-    <span class="help-block"></span>
-
-<?php 
-
-    $table_name = $prefix . "profile_complete";
-    $column_name = "tshirt";
-
-    $query = "SELECT COLUMN_TYPE  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME = '$column_name'";
-    
-        echo "<label for='tshirt'>Tshirt:</label><br />";
-        echo "<select name=\"$column_name\" id='tshirt'>";
-
-            $result = $mysqli->query($query);
-
-    $row = $result->fetch_assoc();
-        $enumList = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
-
-    foreach($enumList as $value)
-         echo "<option value=\"$value\">$value</option>";
-
-    echo "</select> <span class='help-block'></span>";
-
-?>
-    </div>
-</div>
-<div class="form-group col-sm-3">   
-    <div class="list-group">
-     <a href="#" class="list-group-item disabled" style="text-align:center;">
-      <b>Dati Economici</b>
-     </a>
-
-
-    <label for="caparra">Acconto:</label>
-    <input readonly type="text" class="form-control" id="caparra" value="<?php echo !empty($caparra)?$caparra:''; ?>" name="caparra" placeholder="0.00">
-    <span class="help-block"></span>
-
-    <label for="iban">IBAN:</label>
-    <input readonly type="text" class="form-control"  id="iban" value="<?php echo !empty($iban)?$iban:''; ?>" name="iban" placeholder="IT60X0542811101000000123456">
-    <span class="help-block"></span>
-    
-    <label for="numcredit">Carta Credito:</label>
-    <input readonly type="text" class="form-control" id="numcredit" value="<?php echo !empty($numerocartacredito)?$numerocartacredito:''; ?>" name="numcredit" placeholder="4222222222222">
-    <span class="help-block"></span>
-
-</div>
-    <div class="list-group">
-     <a href="#" class="list-group-item disabled" style="text-align:center;">
-      <b>Fornitore </b>
-     </a>
-
-    <label for="codicefornitore">Codice Fornitore:</label>
-    <input readonly type="text" class="form-control" id="codicefornitore" value="<?php echo !empty($codicefornitore)?$codicefornitore:''; ?>" name="codicefornitore" placeholder="codicefornitore">
-    <span class="help-block"></span>
-    
-    <label for="attivitafornitore">Attivita' Fornitore:</label>
-    <input  readonly type="text" class="form-control" id="attivitafornitore" value="<?php echo !empty($attivitafornitore)?$attivitafornitore:''; ?>" name="attivitafornitore" placeholder="codicefornitore">
-    <span class="help-block"></span>    
-    </div>
-    <div class="list-group">
-         <a href="#" class="list-group-item disabled" style="text-align:center;">
-            <b>Tutor </b>
-        </a>
-        <label for="tutor">Tutor associato:</label>
-        <input readonly type="text" class="form-control" id="tutor" value="<?php echo !empty($tutor)?$tutor:''; ?>" name="tutor" placeholder="tutor">
-        <span class="help-block"></span>
-    </div>
-</div>
-<div class="form-group col-sm-3">   
-    <div class="list-group">
-        <a href="#" class="list-group-item disabled" style="text-align:center;">
-        <b>Socio UISP </b>
-     </a>   
-        <label for="numuisp">Num UISP:</label>
-        <input readonly type="text" class="form-control" id="numuisp" value="<?php echo !empty($numuisp)?$numuisp:''; ?>" name="numuisp" placeholder="numero uisp">
-        <span class="help-block"></span>
-
-        <label for="datarilascio">Data Rilascio:</label>
-        <input readonly type="text" class="form-control" id="datarilascio" value="<?php echo !empty($datarilascio)?$datarilascio:''; ?>" name="datarilascio" placeholder="data rilascio">
-        <span class="help-block"><?php echo $fnameError;?></span>
-
-<?php 
-
-    $table_name = $prefix . "profile_complete";
-    $column_name = "certificatomedico";
-
-    $query = "SELECT COLUMN_TYPE  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME = '$column_name'";
-    
-        echo "<label for='certificatomedico'>Certificato medico:</label><br />";
-        echo "<select name=\"$column_name\" id='certificatomedico'>";
-
-            $result = $mysqli->query($query);
-
-    $row = $result->fetch_assoc();
-        $enumList = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
-
-    foreach($enumList as $value)
-         echo "<option value=\"$value\">$value</option>";
-
-    echo "</select> <span class='help-block'></span>";
-
-?>
-
-
-        <label for="datarilasciomedico">Data Rilascio Medico:</label>
-        <input readonly type="text" class="form-control" id="datarilasciomedico" value="<?php echo !empty($datarilasciomedico)?$datarilasciomedico:''; ?>" name="datarilasciomedico" placeholder="data rilascio">
-        <span class="help-block"><?php echo $fnameError;?></span>   
-
-        <label for="prezzotessera">Prezzo Tessera:</label>
-        <input readonly type="text" class="form-control" id="prezzotessera" value="<?php echo !empty($prezzotessera)?$prezzotessera:''; ?>" name="prezzotessera" placeholder="Prezzo Tessera">
-        <span class="help-block"><?php echo $fnameError;?></span>   
-    
-        <label for="pagatoil">Pagato il:</label>
-        <input readonly type="text" class="form-control" id="pagatoil" value="<?php echo !empty($pagatoil)?$pagatoil:''; ?>" name="pagatoil" placeholder="Pagato il">
-        <span class="help-block"><?php echo $fnameError;?></span>   
-
-<?php 
-
-    $table_name = $prefix . "profile_complete";
-    $column_name = "modalitapagamento";
-
-    $query = "SELECT COLUMN_TYPE  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME = '$column_name'";
-    
-        echo "<label for='modalitapagamento'>Modalita pagamento:</label><br />";
-        echo "<select name=\"$column_name\" id='modalitapagamento'>";
-
-            $result = $mysqli->query($query);
-
-    $row = $result->fetch_assoc();
-        $enumList = explode(",", str_replace("'", "", substr($row['COLUMN_TYPE'], 5, (strlen($row['COLUMN_TYPE'])-6))));
-
-    foreach($enumList as $value)
-         echo "<option value=\"$value\">$value</option>";
-
-    echo "</select> <span class='help-block'></span>";
-
-?>
-
-
-        <!--<label for="fattura">Fattura:</label>
-        <input type="text" class="form-control" id="fattura" value="" name="fattura" placeholder="Fattura">
-        <span class="help-block"><?php echo $fnameError;?></span>   -->
-
-        <label for="numfattura">Fattura Num:</label>
-        <input readonly type="text" class="form-control" id="numfattura" value="<?php echo !empty($numfattura)?$numfattura:''; ?>" name="numfattura" placeholder="Fattura">
-        <span class="help-block"></span>    
-
-        <label for="datafattura">Data Fattura:</label>
-        <input readonly type="text" class="form-control" id="datafattura" value="<?php echo !empty($datafattura)?$datafattura:''; ?>" name="datafattura" placeholder="Fattura">
-        <span class="help-block"></span>    
-    
-    </div>
-
-</div>
-</div>
-    <div class="form-actions">
-        <input type="hidden" value="<?php echo $uid; ?>" name="idmember" id="idmember" />
-        <button type="submit" class="btn btn-lg btn-primary">AGGIORNA</button>
-        <a class="btn btn-lg btn-default" href="./dashboard.php">INDIETRO</a>
-    </div>
-
-
-                                                                            </form>
+ $servername = "localhost";
+ $username = "root";
+ $password = "developer";
+ $dbname = "oltremare";
   
-                                                    <!-- SIMULATE PAYMENT - REMOVE ME FOR PRODUCTION-->
-                                                    
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Panel -->
-                                </div>
-                            </div>
-            </div>
-        </div>
-        <!-- End Page Content -->
 
-    </div><!-- End Main Wrapper  -->
+ $mysqli = new mysqli($servername, $username, $password, $dbname);
+  
+
+ if ($mysqli->connect_errno) {
+     echo "Connessione fallita: ". $mysqli->connect_error . ".";
+     exit();
+ }
+
+
+
+if($user_level=='2')
+{
+	if(!empty($user_id) && !empty($user_email))
+	{
+	//members WHERE email = ? LIMIT 1
+		$sql = "SELECT id_utente FROM cv_members  WHERE id = " .$user_id ." AND email = '". $user_email ."' LIMIT 1";
+		
+	
+	}else if(!empty($user_id) && !empty($user_name))
+	{
+		$sql = "SELECT id_utente FROM cv_members  WHERE id = " .$user_id ." AND name = '". $user_name ."' LIMIT 1";
+
+	}
+
+	//var_dump($sql);
+	$result = $mysqli->query($sql);
+	while($row = mysqli_fetch_assoc($result)) 
+    {
+    	$uid = $row['id_utente'];
+    }
+	//var_dump($uid);
+
+	//var_dump($result);
+
+     $sql = "SELECT id_utente FROM cv_barche where id_utente =" . $uid ;
+  $result = $mysqli->query($sql);
+  $numero_righe_presenti  = mysqli_num_rows($result);
+ 
+  if( $numero_righe_presenti === 0) 
+  {
+    $s = "INSERT INTO cv_barche (id_utente,nome,cognome) SELECT id_utente,name as nome, surname as cognome FROM cv_generale where id_utente =" . $uid;
+
+/*  LOG 
+
+    $myfile = fopen("sezione/log.json", "w") or die("Unable to open file!");
+    $txt =json_encode($s);
+    fwrite($myfile, $txt);
+    fclose($myfile);
+*/
+    $r1 = $mysqli->query($s);  
+  }
+
+  
+
+  $sql = "SELECT * FROM cv_generale where id_utente =" . $uid ;
+  $result = $mysqli->query($sql);
+  $arr = array();
+    if(mysqli_num_rows($result) != 0) 
+    {  
+       while($row = mysqli_fetch_assoc($result)) 
+       {
+         $arr[] = $row;
+       }
+       unlink("sezione/generale/generale.json");
+       $myfile = fopen("sezione/generale/generale.json", "w") or die("Unable to open file!");
+       $txt =json_encode($arr);
+       fwrite($myfile, $txt);
+       fclose($myfile);
+     }
+
+
+
+
+      // TAB SOCIO 
+      $sql = "SELECT * FROM cv_socio WHERE id_utente =" . $uid . " LIMIT 1";
+      $result = $mysqli->query($sql);
+      $arr = array();
+      if(mysqli_num_rows($result) != 0) 
+      {
+         while($row = mysqli_fetch_assoc($result)) 
+         {
+           $arr[] = $row;
+         }
+        $myfile = fopen("sezione/socio/socio.json", "w") or die("Unable to open file!");
+        $txt =json_encode($arr);
+        fwrite($myfile, $txt);
+        fclose($myfile);
+      }else
+      {
+
+        $sql = "INSERT INTO cv_socio (id_utente, tess_uisp, uisp_numero, datarilascio,certificato,fiv,fiv_scadenza,fiv_certificato,patente,patente_tipo,data_scadenza_patente) " .
+          " SELECT id_utente, uisp as tess_uisp, uisp_numero, uisp_datarilascio as datarilascio ,certificato, fiv, fiv_scadenza,fiv_certificato,patente,patente_tipo,data_scadenza_patente FROM cv_members WHERE id_utente =" .$uid;
+        
    
 
+
+        $result = $mysqli->query($sql);
+        $arr = array();
+        if(mysqli_num_rows($result) != 0) 
+        {
+           while($row = mysqli_fetch_assoc($result)) 
+           {
+             $arr[] = $row;
+           }
+           $myfile = fopen("sezione/socio/socio.json", "w") or die("Unable to open file!");
+           $txt =json_encode($arr);
+           fwrite($myfile, $txt);
+           fclose($myfile);
+            
+        }
+      }
+
+      //TAB INFO BANCA
+
+      $sql = "SELECT * FROM cv_amministrazione WHERE id_utente =" . $uid . " LIMIT 1";
+      $result = $mysqli->query($sql);
+      $arr = array();
+      if(mysqli_num_rows($result) != 0) 
+      {
+         while($row = mysqli_fetch_assoc($result)) 
+         {
+           $arr[] = $row;
+         }
+
+         /*  LOG */
+
+        /*  $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+          $txt =json_encode($sql);
+          fwrite($myfile, $txt);
+          fclose($myfile);
+    /**/
+          
+          $myfile = fopen("sezione/infobanca/infobanca.json", "w") or die("Unable to open file!");
+          $txt =json_encode($arr);
+          fwrite($myfile, $txt);
+          fclose($myfile);
+      }else
+      {
+
+         $sql = "INSERT INTO cv_amministrazione (id_utente) " .
+          "SELECT id_utente FROM cv_members WHERE id_utente =" .$uid;
+    
+          $result = $mysqli->query($sql);
+          $arr = array();
+          if(mysqli_num_rows($result) != 0) 
+          {
+           while($row = mysqli_fetch_assoc($result)) 
+           {
+             $arr[] = $row;
+           }
+           $myfile = fopen("sezione/infobanca/infobanca.json", "w") or die("Unable to open file!");
+           $txt =json_encode($arr);
+           fwrite($myfile, $txt);
+           fclose($myfile);
+            
+        }
+
+
+
+
+
+      }
+  
+
+       //TAB CONTABILITA
+      $sql = "SELECT * FROM cv_contabilita WHERE id_utente =" .$uid;
+      $result = $mysqli->query($sql);
+      $arr = array();
+      if(mysqli_num_rows($result) != 0) 
+      {
+         while($row = mysqli_fetch_assoc($result)) 
+         {
+           $arr[] = $row;
+         }
+         
+         $myfile = fopen("sezione/contabilita/contabilita.json", "w") or die("Unable to open file!");
+         $txt =json_encode($arr);
+         fwrite($myfile, $txt);
+         fclose($myfile);
+      }else{
+        $sql = "INSERT INTO cv_contabilita (id_utente, name, surname) SELECT id_utente, name,surname FROM cv_members WHERE id_utente =" .$uid;
+        $result = $mysqli->query($sql);
+        $arr = array();
+        if(mysqli_num_rows($result) != 0) 
+        {
+           while($row = mysqli_fetch_assoc($result)) 
+           {
+             $arr[] = $row;
+           }
+           $myfile = fopen("sezione/contabilita/contabilita.json", "w") or die("Unable to open file!");
+            $txt =json_encode($arr);
+            fwrite($myfile, $txt);
+            fclose($myfile);
+        }
+      }
+  
+
+
+
+
+
+
+      //TAB BARCHE
+      $sql = "SELECT b.* FROM cv_armatore as b where b.id_utente = " .$uid;
+      $result = $mysqli->query($sql);
+
+      $arr = array();
+      if(mysqli_num_rows($result) != 0) 
+      {
+         while($row = mysqli_fetch_assoc($result)) 
+         {
+          
+          if($row['armatore'] == 1)
+            $row['armatore'] = 'SI';
+          if($row['armatore'] == 2 || $row['armatore'] == "")
+            $row['armatore'] = 'NO';
+
+
+          if($row['tipo'] == 1)
+            $row['tipo'] = 'vela';
+          if($row['tipo'] == 2 )
+            $row['tipo'] = 'motore';
+
+
+
+           $arr[] = $row;
+         }
+            unlink("sezione/barche/barche.json");
+            $myfile = fopen("sezione/barche/barche.json", "w") or die("Unable to open file!");
+            $txt =json_encode($arr);
+            fwrite($myfile, $txt);
+            fclose($myfile);
+         }else{
+              /* SE non presente nella tabella rmatore*/
+               $sql = "SELECT * FROM cv_barche where id_utente = " .$uid;
+               $result = $mysqli->query($sql);
+               $arr = array();
+                if(mysqli_num_rows($result) != 0)
+                {
+                  while($row = mysqli_fetch_assoc($result)) 
+                  {
+                    $arr[] = $row;
+                  }
+                }
+              unlink("sezione/barche/barche.json");
+              $myfile = fopen("sezione/barche/barche.json", "w") or die("Unable to open file!");
+              $txt =json_encode($arr);
+              fwrite($myfile, $txt);
+              fclose($myfile);
+           } 
+
+      //TAB FORMAZIONE
+          $sql = "SELECT * from cv_formazione_utente  WHERE id_utente =" .$uid ;
+          $result = $mysqli->query($sql);
+            $arr = array();
+            if(mysqli_num_rows($result) != 0) 
+            {
+                while($row = mysqli_fetch_assoc($result)) 
+                {
+                  $arr[] = $row;  
+                }
+
+             
+              $myfile = fopen("sezione/formazione/formazione.json", "w") or die("Unable to open file!");
+              $txt =json_encode($arr);
+              fwrite($myfile, $txt);
+              fclose($myfile);
+
+           }else{
+               $sql = "INSERT INTO cv_formazione_utente (id_utente,nome,cognome) SELECT id_utente, name as nome, surname as cognome FROM cv_generale WHERE id_utente = ". $uid;
+               $result = $mysqli->query($sql);
+               $arr = array();
+                if(mysqli_num_rows($result) != 0)
+                {
+                  while($row = mysqli_fetch_assoc($result)) 
+                  {
+                    $arr[] = $row;
+                  }
+                }
+              unlink("sezione/formazione/formazione.json");
+              $myfile = fopen("sezione/formazione/formazione.json", "w") or die("Unable to open file!");
+              $txt =json_encode($arr);
+              fwrite($myfile, $txt);
+              fclose($myfile);
+           } 
+      
+          //TAB FORMAZIONE
+          $sql = "SELECT * from cv_recapiti  WHERE id_utente =" .$uid ;
+          $result = $mysqli->query($sql);
+            $arr = array();
+            if(mysqli_num_rows($result) != 0) 
+            {
+                while($row = mysqli_fetch_assoc($result)) 
+                {
+                  $arr[] = $row;  
+                }
+              $myfile = fopen("sezione/recapiti/recapiti.json", "w") or die("Unable to open file!");
+              $txt =json_encode($arr);
+              fwrite($myfile, $txt);
+              fclose($myfile);
+
+           }else{
+               $sql = "INSERT INTO cv_recapiti (id_utente,nome,cognome) SELECT id_utente, name as nome, surname as cognome FROM cv_generale WHERE id_utente = ". $uid;
+               $result = $mysqli->query($sql);
+               $arr = array();
+                if(mysqli_num_rows($result) != 0)
+                {
+                  while($row = mysqli_fetch_assoc($result)) 
+                  {
+                    $arr[] = $row;
+                  }
+                }
+              unlink("sezione/formazione/formazione.json");
+              $myfile = fopen("sezione/formazione/formazione.json", "w") or die("Unable to open file!");
+              $txt =json_encode($arr);
+              fwrite($myfile, $txt);
+              fclose($myfile);
+           }            
+
+   
+
+          //TAB STAMPA
+          $sql = "SELECT g.name, g.surname, s.fiv, s.fiv_scadenza, s.tess_uisp, s.uisp_numero, f.abilitazione, f.attivita, f.scuola, f.sede, f.anno  FROM oltremare.cv_socio as s, oltremare.cv_generale as g, oltremare.cv_formazione_utente as f where s.id_utente =" .$uid . " and f.id_utente =" .$uid . " and g.id_utente =" .$uid ;
+          $result = $mysqli->query($sql);
+          $arr = array();
+          $arr1 = array();
+          if(mysqli_num_rows($result) != 0) 
+           {
+             while($row = mysqli_fetch_assoc($result)) 
+             {
+                $arr1[] = $row;
+                $arr = $row['name'] .';'. $row['surname'] .';'.$row['fiv'] .';'.$row['fiv_scadenza'] .';'.$row['tess_uisp'] .';'.$row['uisp_numero'] .';'.$row['abilitazione']. ';' . $row['attivita'] . ';' .$row['scuola'] . ';' .$row['sede']. ';' .$row['anno'];
+                
+
+             }
+
+            /* PER STAMPA*/
+            $myfile = fopen("sezione/stampa/cv.txt", "w") or die("Unable to open file!");
+            fwrite($myfile, $arr);
+            fclose($myfile);
+
+            //PER CARICAMENTO VIDEO
+            unlink("sezione/stampa/cv.json");
+            $myfile = fopen("sezione/stampa/cv.json", "w") or die("Unable to open file!");
+            $txt =json_encode($arr1);
+            fwrite($myfile, $txt);
+            fclose($myfile);
+
+           }
+   
+
+
+
+
+}
+
+
+
+?>
+                  
+<div ng-cloak="" class="tabsdemoDynamicHeight" ng-app="MyApp">
+  <md-content>
+    <md-tabs md-dynamic-height="" md-border-bottom="">
+      <md-tab label="Generale">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Generale</h1>
+          <?php echo $uid; ?>
+           <div ng-include src="'sezione/generale/index.php'"></div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Socio UISP">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Socio UISP</h1>
+            <div ng-include src="'sezione/socio/index.php'"></div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Info Bancarie">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Amministrativa</h1>
+          <div ng-include src="'sezione/infobanca/index.php'"></div>
+        </md-content>
+      </md-tab>
+        <md-tab label="Contabilita">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Contabilita'</h1>
+          <div ng-include src="'sezione/contabilita/index.php'"></div>
+        </md-content>
+      </md-tab>
+       <md-tab label="Barche">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Barche</h1>
+          <div ng-include src="'sezione/barche/index.php'"></div>
+        </md-content>
+      </md-tab>
+       <md-tab label="Formazione">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Formazione</h1>
+          <div ng-include src="'sezione/formazione/index.php'"></div>
+        </md-content>
+      </md-tab>
+       <md-tab label="Recapiti">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Recapiti</h1>
+          <div ng-include src="'sezione/recapiti/index.php'"></div>
+        </md-content>
+      </md-tab>
+       <md-tab label="STAMPA CV">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">STAMPA CV</h1>
+          <div ng-include src="'sezione/stampa/index.php'"></div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
+</div>
+</div>
+
+      
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ <script src="assets/js/bootstrap.min.js"></script>
+ <script src="node_modules/angular/angular.min.js"></script>
+ <script src="node_modules/angular-animate/angular-animate.js"></script>
+ <script src="node_modules/angular-aria/angular-aria.js"></script>
+ <script src="node_modules/angular-material/angular-material.js"></script>
+ <script src="node_modules/moment/moment.js"></script>
+ <script src="node_modules/flat-datepicker/ng-flat-datepicker.js"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+    <!-- Ignite UI Required Combined JavaScript Files -->
+    <script src="http://cdn-na.infragistics.com/igniteui/2016.1/latest/js/infragistics.core.js"></script>
+    <script src="http://cdn-na.infragistics.com/igniteui/2016.1/latest/js/infragistics.lob.js"></script>
+
+  <script type="text/javascript">
+    var app = angular.module('MyApp',['ngMaterial','ngFlatDatepicker']);
+  </script>
+<!-- SEZIONE PAGINE -->
+<script src="sezione/generale/data/generale.js"></script>
+<script src="sezione/socio/socio.js"></script>
+<script src="sezione/infobanca/infobanca.js"></script>
+<script src="sezione/barche/barche.js"></script>
+<script src="sezione/formazione/formazione.js"></script>
+<script src="sezione/contabilita/contabilita.js"></script>
+<script src="sezione/recapiti/recapiti.js"></script>
+<script src="sezione/stampa/stampa.js"></script>
+
+</body>
+</html>

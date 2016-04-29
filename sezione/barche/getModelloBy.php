@@ -5,7 +5,7 @@
  $servername = "localhost";
  $username = "root";
  $password = "developer";
- $dbname = "UOLTRE";
+ $dbname = "oltremare";
   
 
  $mysqli = new mysqli($servername, $username, $password, $dbname);

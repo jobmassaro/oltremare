@@ -18,13 +18,13 @@
     <div class="col-md-10">
         <div class="table-responsive" ng-controller="BarcheCtrl" >
             <div class="form-group">
-                 <button class="well well-sm" ng-show="show_form" ng-click="clkArmatore(details)" id="edit" >Aggiungi<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                 <button class="well well-sm" ng-show="show_form" ng-click="nuovoCorso(details)" id="edit" >Aggiungi<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
             </div>
             <!-- Include form template which is used to insert data into database -->
                 <div ng-include src="'sezione/barche/templates/addArmatore.html'"></div>
 
             <!-- -->
-                <div ng-include src="'sezione/barche/templates/editForm.html'"></div>
+                <div ng-include src="'sezione/barche/templates/updateArmatore.html'"></div>
 
             <table class="table table-hover">
             <tr>
@@ -41,8 +41,8 @@
                 <td >{{detail.cognome}}</td>
                 <td>{{detail.armatore}}</td>
                 <td>{{detail.tipo}}</td>
-                <td>{{detail.nome_cantiere}}</td>
-                <td>{{detail.nomecant }}</td>
+                <td>{{detail.cantiere}}</td>
+                <td>{{detail.modello }}</td>
                 <td>{{detail.metri }}</td>
                 <td><button class="btn btn-warning" ng-click="editArmatore(detail)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button></td>
                 <td><button class="btn btn-danger" ng-click="deleteArmatore(detail)" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>

@@ -10,6 +10,7 @@ include('lang/translate.php');
 list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all_settings();
 
 
+unlink("sezione/amministrativa/amministrativa.json");
 unlink("sezione/contabilita/contabilita.json");
 unlink("sezione/formazione/formazione.json");
 //unlink("sezione/socio/socio.json");

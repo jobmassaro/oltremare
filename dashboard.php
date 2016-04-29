@@ -54,7 +54,18 @@ list($timeout_enabled, $warning_title, $warning_message, $inactivity_timer, $ina
 
 <body>
 	<!-- Start Top Navigation -->
-	<?php include('assets/comp/top-nav.php');?>
+
+	<?php
+		if($user_level == 1) 
+		{
+			include('assets/comp/top-nav.php');
+		}		
+		else{
+
+			include('members/top-nav.php');
+		}
+			
+		?>
     <!-- Start Main Wrapper --> 
    	<div id="wrapper">
 		<!-- Side Wrapper -->
@@ -181,7 +192,7 @@ list($timeout_enabled, $warning_title, $warning_message, $inactivity_timer, $ina
       dialogTimeRemaining: 'Time remaining',
       dialogStayLoggedInButton: 'Stay Logged In',
       dialogLogOutNowButton: 'Log Out Now',
-      errorAlertMessage: 'Please disable "Private Mode", or upgrade to a modern browser. Or perhaps a dependent file missing. Please see: https://github.com/marcuswestin/store.js',
+      errorAlertMessage: 'Please disable "Private Mode", or upgrade to a modern browser. Or perhaps a dependent file missing.',
       sessionKeepAliveTimer: 600,   // ping the server at this interval in seconds.
       sessionKeepAliveUrl: window.location.href
       });

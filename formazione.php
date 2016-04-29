@@ -28,7 +28,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 
 
 
-  $sql = "SELECT * from cv_formazione_oltremare";
+  $sql = "SELECT * from cv_formazione_oltremare ORDER BY nome_corso ASC";
   $result = $mysqli->query($sql);
   $arr = array();
     if(mysqli_num_rows($result) != 0) 
@@ -38,10 +38,10 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
            $arr[] = $row;
        }
 
-       //$myfile = fopen("sezione/corsi/corsi.json", "w") or die("Unable to open file!");
-       //$txt =json_encode($arr);
-       //fwrite($myfile, $txt);
-       //fclose($myfile);
+       $myfile = fopen("sezione/corsi/corsi.json", "w") or die("Unable to open file!");
+       $txt =json_encode($arr);
+       fwrite($myfile, $txt);
+       fclose($myfile);
     }
 
 
@@ -101,14 +101,18 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 											<span class="title">
 												<?php echo 'FORMAZIONE';?>
 												<div class="pull-right">
-													<a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-success" style="margin-right:10px;"><i class="fa fa-plus-circled"></i> <?php echo 'Aggiungi Nuovo Corso';?></a> 
+                          <button class="btn btn-sm btn-success" ng-show="show_form" ng-click="addCorso(details)" id="mainCorso" style="margin-right:20px"><b>Aggiungi nuovo Corso</b> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 												</div>
 											</span>
 										</div>
 									
 <p></p>
 		<div >
-	
+	   
+     <div ng-include src="'sezione/corsi/templates/nuovocorso.html'"></div>
+     <div ng-include src="'sezione/corsi/templates/editCorso.html'"></div>
+     <!-- -->
+     
 	<table class="table table-hover">
     <tr>
         <th>Corso </th>

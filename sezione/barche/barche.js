@@ -1,116 +1,148 @@
+app.controller("BarcheCtrl",function($http, $scope, filterFilter) {
 
-app.controller("BarcheCtrl",function($scope, $http, CustomerService){
-	getInfoBarche();
-	$('#armatoreForm').css('display', 'none');
-	$('#frmArmatore').css('display', 'none');
+ 	getInfoBarche();
+  	$('#armatoreForm').css('display', 'none');
+  	$('#frmArmatore').css('display', 'none');
 
-	function getInfoBarche(){
-		$http.get('sezione/barche/barche.json').success(function(data){
-			$scope.details = data;
+  
+  function getInfoBarche(){
+    $http.get('sezione/barche/barche.json').success(function(data){
+      $scope.details = data;
 
-		}).error(function(data){
-			console.log("data");
-		});
-	}
+    }).error(function(data){
+      console.log("data");
+    });
+  }
 
 
 	$scope.customer = [];
 
-	$scope.addArmatore = function(info){
+	$scope.show_form = true;
+	$scope.clkArmatore= function(add){  
+	    $scope.newArmatore = add;
+	    $('#frmArmatore').slideToggle();
+  
+  	}
 
-		console.log(info);
-		/*
-		$http.post('databaseFiles/insertDetails.php',{"name":info.name,"email":info.email,"address":info.address,"gender":info.gender}).success(function(data){
-			if (data == true) 
+
+  	$scope.addArmatore = function(info){
+
+  		$http.post('sezione/barche/addBarche.php',{"id": info.id, "id_utente":info.id_utente, "nome":info.nome,
+				"cognome":info.cognome,"tipo":info.tipo,"armatore":info.armatore,
+				 "modello": info.modello.modello,"cantiere":info.modello.cantiere, "nome_cantiere":info.modello.nome_cantiere, "metri":info.metri
+			}).success(function(data)
 			{
-				getInfoBarche();
-			$('#empForm').css('display', 'none');
-			}
-		});*/
-	}
+			
 
+				if (data == true) 
+				{
+					$('#frmArmatore').css('display', 'none');
+					location.reload(); 
+					
+				}
+			});
+		/*console.log('info');
+		console.log(info);
+  		console.log(info.modello.cantiere);*/
+  	}
+
+
+  	$scope.editArmatore = function(info){
+
+  		console.log(info);
+  		$scope.currentUser = info;
+		$('#armatoreForm').slideToggle();
+		/*
+  		$http.post('sezione/barche/updateBarche.php',{"id": info.id, "id_utente":info.id_utente, "nome":info.nome,
+				"cognome":info.cognome,"tipo":info.tipo,"armatore":info.armatore,
+				 "modello": info.modello.modello,"cantiere":info.modello.cantiere, "nome_cantiere":info.modello.nome_cantiere, "metri":info.metri
+			}).success(function(data)
+			{
+			
+
+				if (data == true) 
+				{
+					$('#frmArmatore').css('display', 'none');
+					location.reload(); 
+					
+				}
+			});
+		/*console.log('info');
+		console.log(info);
+  		console.log(info.modello.cantiere);*/
+  	}
 
 
 	$scope.updateArmatore = function(info){
-		console.log("update");
-		console.log(info);
+
+	$http.post('sezione/barche/updateBarche.php',{"id": info.id, "id_utente":info.id_utente, "nome":info.nome,
+				"cognome":info.cognome,"tipo":info.tipo,"armatore":info.armatore,
+				 "modello": info.modello.modello,"cantiere":info.modello.cantiere, "nome_cantiere":info.modello.nome_cantiere, "metri":info.metri
+			}).success(function(data)
+			{
+			
+
+				if (data == true) 
+				{
+					$('#frmArmatore').css('display', 'none');
+					location.reload(); 
+					
+				}
+			});
 	}
 
-
-	$scope.editArmatore = function(info)
-	{
-		$scope.armatore = info;
-		$('#armatoreForm').slideToggle();
-		console.log(info);
-	}
-
-	$scope.show_form = true;
-	$scope.clkArmatore= function(add){	
-		$scope.newArmatore = add;
-		$('#frmArmatore').slideToggle();
-	
-	}
-  
-	    
-  	$scope.countries = CustomerService.getCountry();
-    
-  	$scope.getCountryStates = function(){
-    	$scope.sates = CustomerService.getCountryState($scope.customer.Country);
-    	$scope.cities =[];
-  	}
-  
-	$scope.insertInfo = function(info){
-		
-		var tt = CustomerService.getUserInfo();
-		console.log(tt.userInformazioni);
-		console.log(info);
-	}
-
-
-  
- 
-});
-
-app.factory("CustomerService", function($filter, $http ){
- var service = {};
-  
-  
-  var countrylist = [
-            { "id": 1, "modello": "Derive" },
-            { "id": 2, "modello": "Multi Cab" },
-            { "id": 3, "modello": "Monotipi" },
-            { "id": 4, "modello": "Multi Sport" },
-            { "id": 5, "modello": "Cabinati" },
-    ];
-  
- 	var statelist;
- 	$http.get('sezione/barche/modello.json').success(function(data) {
-        statelist = data;
-    });    
-
-	var userInformazioni;
-	$http.get('sezione/recapiti/recapiti.json').success(function(data) {
-        userInformazioni = data;
-    });    	
-
-	service.getCountry = function(){    
-    	return countrylist;
-  	};
-
-  	service.getUserInfo = function(){
-  		return userInformazioni;
+  	$scope.deleteArmatore = function(info){
+  		$http.post('sezione/barche/deleteBarche.php',{"id": info.id, "id_utente":info.id_utente}).success(function(data){
+  			if (data == true) 
+				{
+					$('#frmArmatore').css('display', 'none');
+					location.reload(); 
+					
+				}
+  		})
   	}
 
-  
-	service.getCountryState = function(countryId){
-		var states = ($filter('filter')(statelist, {id_modello: countryId }));
-    return states;
-  };
- 
-  
-  
-  
-  return service;
-  
-  
+
+
+$scope.parentItems = [
+{
+	 "id": 1,
+     "modello": "Derive"
+},{
+	 "id": 2,
+     "modello": "Multi Cab"
+},{
+	 "id": 3,
+     "modello": "Monotipi"
+},{
+	"id": 4,
+    "modello": "Multi Sport"
+
+},{
+	"id": 5,
+	"modello": "Cabinati"
+}];
+
+
+$scope.selectedParentItem = $scope.parentItems[0];
+
+$scope.childItems = [];
+$http.get('sezione/barche/modello.json').success(function(data){
+    $scope.childItems = data;
 });
+
+$scope.filteredArray = [];
+$scope.$watch("id_modello", function (newValue) {
+	console.log("newValue");
+	console.log(newValue);
+    $scope.filteredArray = filterFilter($scope.childItems, newValue);
+    $scope.selectedChildItem = $scope.filteredArray[0];
+},true);
+
+});
+
+
+
+
+
+
