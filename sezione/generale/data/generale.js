@@ -38,7 +38,9 @@ app.controller("dbController",function($scope, $http){
 				if (data == true) 
 				{
 					getInfo();
+
 					$('#empForm').css('display', 'none');
+					location.reload(); 
 				}
 			})
 		}
