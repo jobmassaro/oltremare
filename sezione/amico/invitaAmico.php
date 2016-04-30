@@ -28,7 +28,6 @@ $data_invio = date("Y-m-d H:i:s");
 
 
 $sql = "INSERT INTO cv_email_send (id_utente,nome,cognome,email,messaggio,data_invio) VALUES (".$id_utente.",'" .$nome ."','".$cognome."','".$email."','".$messaggio."','".$data_invio."');";
-var_dump($sql);
 $result = $mysqli->query($sql);
 
 
