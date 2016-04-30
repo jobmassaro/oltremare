@@ -18,7 +18,7 @@ app.controller("BarcheCtrl",function($http, $scope, filterFilter) {
 	$scope.customer = [];
 
 	$scope.show_form = true;
-	$scope.clkArmatore= function(add){  
+	$scope.nuovaBarca= function(add){  
 	    $scope.newArmatore = add;
 	    $('#frmArmatore').slideToggle();
   

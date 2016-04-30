@@ -18,7 +18,7 @@
     <div class="col-md-10">
         <div class="table-responsive" ng-controller="BarcheCtrl" >
             <div class="form-group">
-                 <button class="well well-sm" ng-show="show_form" ng-click="nuovoCorso(details)" id="edit" >Aggiungi<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                 <button class="well well-sm" ng-show="show_form" ng-click="nuovaBarca(details)" id="edit" >Aggiungi<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
             </div>
             <!-- Include form template which is used to insert data into database -->
                 <div ng-include src="'sezione/barche/templates/addArmatore.html'"></div>
