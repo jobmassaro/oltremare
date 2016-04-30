@@ -279,6 +279,42 @@ setlocale(LC_MONETARY, 'it_IT');
               fwrite($myfile, $txt);
               fclose($myfile);
            } 
+
+           //TAB AMICO
+           unlink("sezione/amico/amico.json");
+          $sql = "SELECT * FROM cv_amico WHERE id_utente = " .$uid;
+          $result = $mysqli->query($sql);
+          $arr = array();
+          
+          if(mysqli_num_rows($result) != 0) 
+           {
+               while($row = mysqli_fetch_assoc($result)) 
+               {
+                  $arr[] = $row;  
+               }
+            $myfile = fopen("sezione/amico/amico.json", "w") or die("Unable to open file!");
+            $txt =json_encode($arr);
+            fwrite($myfile, $txt);
+            fclose($myfile);  
+           }else{
+                $sql = "INSERT INTO cv_amico (id_utente) SELECT id_utente FROM cv_generale WHERE id_utente = ". $uid;
+                $result = $mysqli->query($sql);
+                $arr = array();
+                if(mysqli_num_rows($result) != 0)
+                {
+                  while($row = mysqli_fetch_assoc($result)) 
+                  {
+                    $arr[] = $row;
+                  }
+                }
+              unlink("sezione/amico/amico.json");
+              $myfile = fopen("sezione/amico/amico.json", "w") or die("Unable to open file!");
+              $txt =json_encode($arr);
+              fwrite($myfile, $txt);
+              fclose($myfile);
+           }
+
+
       
           //TAB FORMAZIONE
           $sql = "SELECT * from cv_recapiti  WHERE id_utente =" .$uid ;
@@ -306,8 +342,8 @@ setlocale(LC_MONETARY, 'it_IT');
                     $arr[] = $row;
                   }
                 }
-              unlink("sezione/formazione/formazione.json");
-              $myfile = fopen("sezione/formazione/formazione.json", "w") or die("Unable to open file!");
+              unlink("sezione/recapiti/recapiti.json");
+              $myfile = fopen("sezione/recapiti/recapiti.json", "w") or die("Unable to open file!");
               $txt =json_encode($arr);
               fwrite($myfile, $txt);
               fclose($myfile);
@@ -453,6 +489,12 @@ setlocale(LC_MONETARY, 'it_IT');
           <div ng-include src="'sezione/recapiti/index.php'"></div>
         </md-content>
       </md-tab>
+       <md-tab label="Invita Amico">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">Invita Amico</h1>
+          <div ng-include src="'sezione/amico/index.php'"></div>
+        </md-content>
+      </md-tab>
        <md-tab label="STAMPA CV">
         <md-content class="md-padding">
           <h1 class="md-display-2">STAMPA CV</h1>
@@ -496,6 +538,7 @@ setlocale(LC_MONETARY, 'it_IT');
 <script src="sezione/formazione/formazione.js"></script>
 <script src="sezione/contabilita/contabilita.js"></script>
 <script src="sezione/recapiti/recapiti.js"></script>
+<script src="sezione/amico/amico.js"></script>
 <script src="sezione/stampa/stampa.js"></script>
 
 </body>
