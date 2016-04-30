@@ -2,6 +2,8 @@ app.controller("AmicoCtrl",function($scope, $http){
 	getInfo();
 	$('#amicoForm').css('display', 'none');
 	$('#editAmicoForm').css('display', 'none');
+	$('#emailForm').css('display', 'none');
+	
   
 	function getInfo(){
 		$http.get('sezione/amico/amico.json').success(function(data){
@@ -64,6 +66,27 @@ app.controller("AmicoCtrl",function($scope, $http){
 				}
 			});
 		
+	}
+
+
+	$scope.openEmailAmico = function(info){
+		$scope.emailInfo = info;
+		$('#emailForm').slideToggle();
+	}
+
+
+	$scope.invitaAmico = function(info){
+		$http.post('sezione/amico/invitaAmico.php',{"id": $scope.emailInfo.id, "id_utente": $scope.emailInfo.id_utente, "nome":$scope.emailInfo.nome,
+				"cognome":$scope.emailInfo.cognome,"email":info.email,"messaggio":info.messaggio				
+			}).success(function(data)
+			{
+			if (data == true) 
+			{
+					$('#amicoForm').css('display', 'none');
+					location.reload(); 
+					
+				}
+			});
 	}
 
 });

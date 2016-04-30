@@ -20,6 +20,7 @@
             </div>
             <div ng-include src="'sezione/amico/templates/addAmico.html'"></div>
             <div ng-include src="'sezione/amico/templates/editAmico.html'"></div>
+            <div ng-include src="'sezione/amico/templates/emailAmico.html'"></div>
             <table class="table table-hover">
             <tr>
                 <th>Nome</th>
@@ -36,8 +37,9 @@
                 <td>{{detail.telefono}}</td>
                 <td>{{detail.facebook}}</td>
                 <td>{{detail.whatsapp}}</td>
-                <td><button class="btn btn-warning" ng-click="fnEditAmico(detail)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button></td>
-                <td><button class="btn btn-danger" ng-click="deleteAmico(detail)" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+                <td><button class="btn btn-warning" ng-click="fnEditAmico(detail)" title="Modifica"><span class="glyphicon glyphicon-edit"></span></button></td>
+                <td><button class="btn btn-info" ng-click="openEmailAmico(detail)" title="Invita amico"><span class="glyphicon glyphicon-envelope"></span></button></td>
+                <td><button class="btn btn-danger" ng-click="deleteAmico(detail)" title="Cancella"><span class="glyphicon glyphicon-trash"></span></button></td>
             </tr>
         </table>
     </div>

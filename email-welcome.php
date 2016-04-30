@@ -67,7 +67,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 										</div>
 										<div class="panel-content">
 											<div class="alert alert-info">
-												You can use the following codes in your emails:<br>
+												Devi cambiare le voci:<br>
 												{$fullname}<br>
 												{$username}<br>
 												{$link}
