@@ -24,6 +24,11 @@
 	</a>
 </li>
 
+<li class="side-menu menu-item <?php if($page=='formazine.php'){echo 'active';}?>">
+	<a href="prenotacorso.php">
+		<i class="fa fa-bookmark" aria-hidden="true"></i><?php echo 'PRENOTA CORSO';?>
+	</a>
+</li>
 
 
 

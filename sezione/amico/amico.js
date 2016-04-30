@@ -82,8 +82,9 @@ app.controller("AmicoCtrl",function($scope, $http){
 			{
 			if (data == true) 
 			{
-					$('#amicoForm').css('display', 'none');
 					location.reload(); 
+					$('#amicoForm').css('display', 'none');
+					
 					
 				}
 			});
