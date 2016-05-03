@@ -143,7 +143,7 @@ il responsabile del trattamento dei dati è Oltre Mare S.S.D.a.R.L.</p>
 
                           <div class="control-group">
                               <div class="controls">
-                               <input type="submit" id="" class="btn btn-lg btn-block" value="Continua la Registrazione">
+                               <input type="submit" id="login" class="btn btn-lg btn-block" value="Continua la Registrazione">
                               </div>
                           </div>
 
