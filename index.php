@@ -54,7 +54,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 				<!--<?php //include 'login-home.php'; ?>-->
 				<!--<img src="assets/img/iphone1.png" alt="">-->
 		<!--	</div>-->
-			<div class="col-md-12" >
+			<div class="col-md-12" style="margin-top:-50px;" >
             		<?php include 'nregistration-home.php'; ?>		
 					<?php if($public_reg=='1'){?>
 							<!--<div class="signup-description">

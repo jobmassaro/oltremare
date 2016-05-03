@@ -1,6 +1,6 @@
  <div id="login-overlay" class="">
       <div class="modal-content">
-          <div class="modal-body">
+          <div class="modal-body" style="padding-bottom:-180px">
             <?php if($public_reg=='1'){?>  
               <div class="row">
                   <div class="col-md-5">
@@ -24,7 +24,7 @@
                       }?>
                       <!-- Username -->
                       <div class="control-group">
-                        <label class="control-label" for="textinput">Accedi con il tuo account</label>
+                        <label class="control-label" for="textinput">Accedi con la tua EMAIL</label>
                         <div class="controls">
                         <input id="textinput" name="email" type="text" placeholder="" class="form-control">
                         </div>
@@ -40,7 +40,7 @@
                       
                       <div class="control-group">
                         <div class="control-group forgot-link">
-                          <a href="forgot.php" id="dimentica"><b>Dimenticata la password?</b></a>
+                          <a href="forgot.php" id="dimentica"><b>Hai dimenticato la password?</b></a>
                         </div>
                       </div>
                       <p>&nbsp;</p>
@@ -54,12 +54,12 @@
                 </fieldset>
               </form> 
             </div>
-            <div class="col-md-1" id="vertical" style="height:800px;">
+            <div class="col-md-1" id="vertical" style="height:800px; ">
               <p class="vertical-line"></p>
             </div>
-                 <div class="col-md-5">
+                 <div class="col-md-5" >
                       <fieldset>
-                        <legend id="registrazione"><b>Registrazione</b></legend>
+                        <legend id="registrazione"><b>Registrati Ora</b></legend>
                        
                           <form id="reg-form" action="index.php" method="post" class="">
                               <div class="form-group">
@@ -143,7 +143,7 @@ il responsabile del trattamento dei dati è Oltre Mare S.S.D.a.R.L.</p>
 
                           <div class="control-group">
                               <div class="controls">
-                               <input type="submit" id="login" class="btn btn-lg btn-block" value="Registrazione">
+                               <input type="submit" id="login" class="btn btn-lg btn-block" value="Continua la Registrazione">
                               </div>
                           </div>
 
@@ -159,6 +159,7 @@ il responsabile del trattamento dei dati è Oltre Mare S.S.D.a.R.L.</p>
               </form>
               <?php } ?>
 
+</div>
                      
                              
 

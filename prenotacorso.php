@@ -134,12 +134,12 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 
     <div class="col-md-10">
 		<form class="form-horizontal" id="" ng-submit="prenotaCorso(n)" >
-			<input type="hidden" ng-model="n.nome" value="<?php $user_name; ?>">
+
 			<div class="col-md-10">
 				<div class="form-group">
     	      	<label for="tipo"  class="col-sm-3 control-label">Nome:</label>
 	        	    <div class="col-sm-4">
-    	        	    <input type="text" class="form-control" value="<?php echo $user_name; ?>">
+	        	    	<input type="text" class="form-control" value="<?php echo $user_name; ?>">
         	    	</div>
     			</div>
     		</div>

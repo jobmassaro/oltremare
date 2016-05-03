@@ -187,9 +187,9 @@ ul.navbar-nav {
 {
 
   width: 1px; /* Line width */
-  background-color: black; /* Line color */
+  background-color: #7F7F7F; /* Line color */
   height: 100%; /* Override in-line if you want specific height. */
-  float: center; /* Causes the line to float to left of content. 
+  float: right; /* Causes the line to float to left of content. 
     You can instead use position:absolute or display:inline-block
     if this fits better with your design */
 
