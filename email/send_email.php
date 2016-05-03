@@ -88,7 +88,7 @@ Licensed under MIT
 									<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
 										<img src="http://oltremare.cloudapp.net/assets/logos/lplogo-1.png"/>
 									</font></a>
-									<p>Grazie per esserti Registrato! Controlla la tua EMAIL</p>
+									<p>Grazie per esserti Registrato! <h4>Controlla la tua E-mail (se non l’hai ricevuta, verifica nello SPAM)</h4></p>
 								</td></tr>
 							</table>						
 						</td></tr>
