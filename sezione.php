@@ -46,6 +46,49 @@ setlocale(LC_MONETARY, 'it_IT');
     $r1 = $mysqli->query($s);  
   }
 
+
+
+          
+  // PROVINCE
+  $q = "SELECT id FROM oltremare.cv_province";
+
+  if ($result=mysqli_query($mysqli,$q))
+  {
+    // Return the number of rows in result set
+    $rowcount=mysqli_num_rows($result);
+    mysqli_free_result($result);
+  }
+
+  $sql = "SELECT * FROM oltremare.cv_province";
+  $result = $mysqli->query($sql);
+  $arr1 ="[";
+  $arr = array();
+
+if(mysqli_num_rows($result) != 0) 
+{
+    $i = 1;
+    while($row = mysqli_fetch_assoc($result)) {
+    if($i != $rowcount)
+    {
+      $arr1 .= '{ "sigla":"' .$row['sigla'] .'","provincia":"'. $row['provincia'] . '"},';
+      $i++;
+    }else{
+      $arr1 .= '{ "sigla":"' .$row['sigla'] .'","provincia":"'. $row['provincia'] . '"}';
+      $i++;
+    }
+      
+      
+  }
+  
+}
+$arr1 .="]"; 
+
+
+  $myfile = fopen("sezione/generale/province.json", "w") or die("Unable to open file!");
+  //$txt =json_encode($arr);
+  fwrite($myfile, $arr1);
+  fclose($myfile);
+
   
 
   $sql = "SELECT * FROM cv_generale where id_utente =" . $uid ;
@@ -62,6 +105,22 @@ setlocale(LC_MONETARY, 'it_IT');
        $txt =json_encode($arr);
        fwrite($myfile, $txt);
        fclose($myfile);
+     }else{
+      
+      $sql = "INSERT INTO cv_generale (id_utente,name,surname,username) SELECT id_utente , name, surname, username FROM cv_members where id_utente = ". $uid;
+      $result = $mysqli->query($sql);
+      $arr = array();
+      if(mysqli_num_rows($result) != 0) 
+      {  
+         while($row = mysqli_fetch_assoc($result)) 
+        {
+           $arr[] = $row;
+        }
+      }
+       $myfile = fopen("sezione/generale/generale.json", "w") or die("Unable to open file!");
+       $txt =json_encode($arr);
+       fwrite($myfile, $txt);
+       fclose($myfile);
      }
 
 
@@ -71,10 +130,28 @@ setlocale(LC_MONETARY, 'it_IT');
       $sql = "SELECT * FROM cv_socio WHERE id_utente =" . $uid . " LIMIT 1";
       $result = $mysqli->query($sql);
       $arr = array();
+      
+      
       if(mysqli_num_rows($result) != 0) 
       {
          while($row = mysqli_fetch_assoc($result)) 
          {
+            if (0 === strpos($row['datarilascio'], '0000') ) 
+            {
+                $row['datarilascio'] = date('d/m/Y');
+                
+            }
+            if(0 === strpos($row['fiv_scadenza'], '0000'))
+            {
+              $row['fiv_scadenza'] = date('d/m/Y');
+
+            }
+
+            if(0 === strpos($row['data_scadenza_patente'], '0000'))
+            {
+              $row['data_scadenza_patente'] = date('d/m/Y');
+            }
+
            $arr[] = $row;
          }
         $myfile = fopen("sezione/socio/socio.json", "w") or die("Unable to open file!");
@@ -87,9 +164,6 @@ setlocale(LC_MONETARY, 'it_IT');
         $sql = "INSERT INTO cv_socio (id_utente, tess_uisp, uisp_numero, datarilascio,certificato,fiv,fiv_scadenza,fiv_certificato,patente,patente_tipo,data_scadenza_patente) " .
           " SELECT id_utente, uisp as tess_uisp, uisp_numero, uisp_datarilascio as datarilascio ,certificato, fiv, fiv_scadenza,fiv_certificato,patente,patente_tipo,data_scadenza_patente FROM cv_members WHERE id_utente =" .$uid;
         
-   
-
-
         $result = $mysqli->query($sql);
         $arr = array();
         if(mysqli_num_rows($result) != 0) 
@@ -448,38 +522,33 @@ setlocale(LC_MONETARY, 'it_IT');
     <md-tabs md-dynamic-height="" md-border-bottom="">
       <md-tab label="Generale">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Generale</h1>
           <?php echo $uid; ?>
            <div ng-include src="'sezione/generale/index.php'"></div>
         </md-content>
       </md-tab>
       <md-tab label="Socio UISP">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Socio UISP</h1>
+        
             <div ng-include src="'sezione/socio/index.php'"></div>
         </md-content>
       </md-tab>
       <md-tab label="Info Bancarie">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Amministrativa</h1>
           <div ng-include src="'sezione/infobanca/index.php'"></div>
         </md-content>
       </md-tab>
         <md-tab label="Contabilita">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Contabilita'</h1>
           <div ng-include src="'sezione/contabilita/index.php'"></div>
         </md-content>
       </md-tab>
        <md-tab label="Barche">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Barche</h1>
           <div ng-include src="'sezione/barche/index.php'"></div>
         </md-content>
       </md-tab>
        <md-tab label="Formazione">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Formazione</h1>
           <div ng-include src="'sezione/formazione/index.php'"></div>
         </md-content>
       </md-tab>

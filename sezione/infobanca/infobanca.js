@@ -4,7 +4,7 @@ app.controller("AmministrazioneCtrl",function($scope, $http){
 
 
 	$scope.datepickerConfig = {
-            allowFuture: false,
+            allowFuture: true,
             dateFormat: 'DD/MM/YYYY'
         };
 

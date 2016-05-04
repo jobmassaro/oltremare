@@ -107,6 +107,9 @@ if(isset($_POST['name'], $_POST['surname'], $_POST['username'])){
         		$id_utente = $row['max'];
         	}
 
+			if(empty($id_utente))
+				$id_utente = 50000;
+
 			$sql = "INSERT INTO ". $prefix ."members (id, id_utente,username, name, surname, email, password, terms, email_key, user_level, reg_date, status, plan_id) VALUES (null ," .$id_utente .",'".$username ."', '" . $name ."', '" . $surname ."','" .$email ."','" .$hash ."','" .$terms ."','" . $email_key ."','" . $default_user_level ."','" . $reg_date ."','" . $int_status ."','". $plan ."')";
 			
 			if (!mysqli_query($mysqli, $sql)) {
@@ -129,34 +132,30 @@ if(isset($_POST['name'], $_POST['surname'], $_POST['username'])){
 
 			if($require_email=='1')
 			{
+
 				//CONFIRM EMAIL ADDRESS - SEND VALIDATION EMAIL	
 				$get_settings = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT site_title, site_email FROM ".$prefix."settings WHERE id=1"));
 				$site_title = $get_settings['site_title'];
-				$site_email = $get_settings['site_email'];
 				$get_ec = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM ".$prefix."email_content WHERE id=1"));
 				$email_content = $get_ec['email_activation'];
 				$encoded_email = urlencode($email);
 				$link = '<a href="http://'.$_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']).'/verify-email.php?v='.$email_key.'&e='.$encoded_email.'">http://'.$_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']).'/verify-email.php?v='.$email_key.'&e='.$encoded_email.'</a>';
-					$string_processed = preg_replace_callback(
-						'~\{\$(.*?)\}~si',
-						function($match) use ($fullname, $username, $link)
-						{
-								return eval('return $' . $match[1] . ';');
-						},
-						$email_content);
-
 					
+				
+				$string_processed = preg_replace_callback('~\{\$(.*?)\}~si',function($match) use ($name, $username, $link)
+				{
+					return eval('return $' . $match[1] . ';');
+				},$email_content);
+
 					$to = $email;
 					$email = 	"oltremare@triosoft.it";
 
-					$message = 	'<html><body>';
-					$message .= $string_processed;
+					$message = 	'<html><body><p></p>';
+					$message .= 'Ciao <b>' . $name .'</b> <p> Ti ringraziamo per esserti iscritto a CV.OLTREMARE. Cortesemente verifica la mail qui sotto.</p>';
+					$message .= 	'<p></p>' . $link ;
 					$message .= "</body></html>";
 
-					//var_dump($message);
-
-
-
+					
 
 					$mail = new PHPMailer();
 					$mail->IsSMTP();
@@ -247,7 +246,7 @@ if(isset($_POST['name'], $_POST['surname'], $_POST['username'])){
 				}else{
 					$redirecting = $redirect_login;
 				}	
-				if($redirecting==''){$redirecting='dashboard';}	
+				if($redirecting==''){$redirecting='dashboard.php';}	
 				//if($require_email=='1'){header('Location: verify-email.php');}else{header('Location: '.$redirecting);} 
 		}
 	}

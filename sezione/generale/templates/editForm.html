@@ -1,84 +1,114 @@
 <form class="form-horizontal alert alert-warning" id="editForm" ng-submit="UpdateInfo(currentUser)" hidden>
-<h3 class="text-center">Aggiornameto</h3>
+<h3 class="text-center">Aggiornamento</h3>
 	<div class="form-group">
-		<label for="Nome">Nome:</label>
-		<input type="text" class="form-control" ng-model="currentUser.name" value="{{currentUser.name}}">
+		<label for="Nome" class="col-sm-3 ">Nome</label>
+		<input type="text" class="col-sm-9" ng-model="currentUser.name" value="{{currentUser.name}}">
 	</div>
 	<div class="form-group">
-		<label for="Cognome">Cognome:</label>
-		<input type="text" class="form-control" ng-model="currentUser.surname" value="{{currentUser.surname}}">
+		<label for="Cognome" class="col-sm-3 ">Cognome</label>
+		<input type="text" class="col-sm-9" ng-model="currentUser.surname" value="{{currentUser.surname}}">
 	</div>
 	<div class="form-group">
-		<label for="Username">Nickname:</label>
-		<input type="text" class="form-control" ng-model="currentUser.username" value="{{currentUser.username}}">
+		<label for="Username" class="col-sm-3 ">Nickname</label>
+		<input type="text" class="col-sm-9" ng-model="currentUser.username" value="{{currentUser.username}}">
 	</div>
 	
 	<div class="form-group">
-		<label for="Datanascita">Data Nascita:</label>
-		<md-datepicker ng-model="currentUser.data_nascita" md-placeholder="{{currentUser.data_nascita}}"></md-datepicker>
+		<label for="Datanascita" class="col-sm-3">Data Nascita</label>
+		<md-datepicker ng-model="currentUser.data_nascita" md-placeholder="{{currentUser.data_nascita}}" class="col-sm-6"></md-datepicker>
 		<!--<input type="text" class="form-control" ng-model="currentUser.data_nascita" value="{{currentUser.data_nascita}}">-->
 	</div>
 
 	<div class="form-group">
-		<label for="Indirizzo">Indirizzo:</label>
-		<input type="text" class="form-control" ng-model="currentUser.via" value="{{currentUser.via}}">
+		<label for="Indirizzo" class="col-sm-3">Indirizzo</label>
+		<input type="text" class="col-sm-9" ng-model="currentUser.via" value="{{currentUser.via}}">
 	</div>
 	<div class="form-group">
-		<label for="Numcivico">Numero civico:</label>
-		<input type="text" class="form-control" ng-model="currentUser.civico" value="{{currentUser.civico}}">
+		<label for="Numcivico" class="col-sm-3">Numero civico</label>
+		<input type="text" class="col-sm-3" ng-model="currentUser.civico" value="{{currentUser.civico}}">
 	</div>
 	<div class="form-group">
-		<label for="Cap">Cap:</label>
-		<input type="text" class="form-control" ng-model="currentUser.cap" value="{{currentUser.cap}}">
+		<label for="Cap" class="col-sm-3 ">Cap</label>
+		<input type="text" class="col-sm-5" ng-model="currentUser.cap" value="{{currentUser.cap}}">
 	</div>
 	<div class="form-group">
-		<label for="Citta">Citta:</label>
-		<input type="text" class="form-control" ng-model="currentUser.comune" value="{{currentUser.comune}}">
+		<label for="Citta" class="col-sm-3">Citta</label>
+		<input type="text" class="col-sm-9" ng-model="currentUser.comune" value="{{currentUser.comune}}">
 	</div>
-	<div class="form-group">
-		<label for="Provincia">Provincia:</label>
-		<input type="text" class="form-control" ng-model="currentUser.provincia" value="{{currentUser.provincia}}">
-	</div>
-
-	<div class="form-group">
-		<label for="CodFiscale">Codice Fiscale:</label>
-		<input type="text" class="form-control" ng-model="currentUser.cod_fiscale" value="{{currentUser.cod_fiscale}}">
+	<div class="form-group" >
+		<label for="Provincia" class="col-sm-3 ">Provincia</label>
+		<select name="provincia" class="col-sm-6" ng-model="currentUser.provincia" >
+		 	<option ng-repeat="x in province">{{ x.provincia }}</option>
+		</select>
+		
 	</div>
 
 	<div class="form-group">
-		<label for="ParIva">Partita IVA:</label>
-		<input type="text" class="form-control" ng-model="currentUser.cod_piva" value="{{currentUser.cod_piva}}">
+		<label for="CodFiscale" class="col-sm-3 ">Codice Fiscale</label>
+		<input type="text" class="col-sm-9" ng-model="currentUser.cod_fiscale" value="{{currentUser.cod_fiscale}}">
 	</div>
 
 	<div class="form-group">
-		<label for="Gender">Sesso:</label>
+		<label for="ParIva" class="col-sm-3 ">Partita IVA</label>
+		<input type="text" class="col-sm-9 " ng-model="currentUser.cod_piva" value="{{currentUser.cod_piva}}">
+	</div>
+
+	<div class="form-group">
+		<label for="Gender" class="col-sm-3 ">Sesso</label>
 		<label for="" class="radio-inline gender">
-				<input type="radio" ng-model="currentUser.sesso" value="uomo" >Uomo
+				<input type="radio" class="col-sm-3 " ng-model="currentUser.sesso" value="uomo" >Uomo
 		</label>
 		<label for="" class="radio-inline gender">
-			<input type="radio" name="gender" ng-model="currentUser.sesso" value="donna">Donna
+			<input type="radio" class="col-sm-3 " name="gender" ng-model="currentUser.sesso" value="donna">Donna
 		</label>
 	</div>
 
 	<div class="form-group">
-		<label for="Spostato">Sposato:</label>
+		<label for="Spostato" class="col-sm-3 ">Sposato</label>
 		<label for="" class="radio-inline gender">
-				<input type="radio" ng-model="currentUser.sposato" value="si" >SI
+				<input type="radio" ng-model="currentUser.sposato" value="si" class="col-sm-3 " >SI
 		</label>
 		<label for="" class="radio-inline gender">
-			<input type="radio" name="sposato" ng-model="currentUser.sposato" value="no">NO
+			<input type="radio" name="sposato" ng-model="currentUser.sposato" value="no" class="col-sm-3 ">NO
 		</label>
 	</div>
 		
 	<div class="form-group">
-		<label for="Figli">Figli:</label>
-		<input type="text" class="form-control" ng-model="currentUser.figli" value="{{currentUser.figli}}">
+		<label for="Figli" class="col-sm-3 ">Figli</label>
+		<select name="figli"  class="col-sm-6" ng-model="currentUser.figli">
+		 	<option value="si">SI</option>
+		 	<option value="no">NO</option>
+		</select>
 	</div>		
 	
 
 	<div class="form-group">
-		<label for="Professione">Professione:</label>
-		<input type="text" class="form-control" ng-model="currentUser.professione" value="{{currentUser.professione}}">
+
+		<label for="Professione" class="col-sm-3 ">Professione</label>
+		<select name="professione"  class="col-sm-6" ng-model="currentUser.professione">
+    	  <option value="artigiano">Artigiano</option>
+      	  <option value="artista">Artista</option>
+      	  <option value="barista">Barista/Cameriere</option>
+      	  <option value="casalinga">Casalinga</option>
+      	  <option value="commerciante">Commerciante</option>
+      	  <option value="commesso">Commesso</option>
+      	  <option value="dipendente_pubblico">Dipendente pubblico</option>
+      	  <option value="dipendente_funzionario">Dirigente/Funzionario</option>
+ 		  <option value="disoccupato">Disoccupato</option>
+		  <option value="ecclesiastico">Ecclesiastico</option>
+ 		  <option value="forze_armate">Forze armate/altri corpi</option>
+ 		  <option value="giornalista">Giornalista</option>
+ 		  <option value="impiegato">Impiegato</option>
+ 		  <option value="imprenditore">Imprenditore</option>
+ 		  <option value="insegnante">Insegnante</option>
+ 		  <option value="libero_professionista">Libero professionista</option>
+		  <option value="Operaio">Operaio</option>	
+		  <option value="pensionato">Pensionato</option>	
+		  <option value="personale_medico">Personale medico</option>
+		  <option value="rappresentante">Rappresentante</option>
+		  <option value="sportivo">Sportivo</option>
+		  <option value="studente">Studente</option>	
+    	</select>
 	</div>
 	<div class="form-group">
 		<button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateMsg(currentUser.id)">Aggiorna</button>

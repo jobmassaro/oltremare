@@ -9,10 +9,11 @@ include('lang/translate.php');
 //SITE SETTINGS
 list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all_settings();
 
-
+unlink("sezione/generale/generale.json");
 unlink("sezione/amministrativa/amministrativa.json");
 unlink("sezione/contabilita/contabilita.json");
 unlink("sezione/formazione/formazione.json");
+unlink("sezione/infobanca/infobanca.json");
 //unlink("sezione/socio/socio.json");
 
 

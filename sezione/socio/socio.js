@@ -1,20 +1,21 @@
-
 app.controller("SocioCtrl",function($scope, $http)
 {
 	getSocio();
 	$('#socioForm').css('display', 'none');
 
 	$scope.datepickerConfig = {
-            allowFuture: false,
+            allowFuture: true,
             dateFormat: 'DD/MM/YYYY'
         };
+
+    
 
 
 	function getSocio(){
 		$http.get('sezione/socio/socio.json').success(function(data){
-		$scope.dettagli = data;
+			$scope.dettagli = data;
 		}).error(function(data){
-			console.log("data");
+			
 		});
 	}
 
@@ -50,8 +51,5 @@ app.controller("SocioCtrl",function($scope, $http)
 
 
 });
-
-
-
 
 

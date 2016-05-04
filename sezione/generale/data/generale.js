@@ -1,6 +1,9 @@
 
 app.controller("dbController",function($scope, $http){
 	getInfo();
+	getProvicie();
+
+
 	$('#editForm').css('display', 'none');
 
 	function getInfo(){
@@ -10,6 +13,20 @@ app.controller("dbController",function($scope, $http){
 		}).error(function(data){
 			console.log("data");
 		});
+
+		}
+		
+
+		function getProvicie(){
+		$http.get('sezione/generale/province.json').success(function(data){
+			$scope.province = data;
+		}).error(function(data){
+			console.log("data");
+		});		
+
+
+
+
 
 
 		$scope.currentUser = {};

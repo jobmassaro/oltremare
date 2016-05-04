@@ -44,7 +44,7 @@
            <button class="well well-sm" ng-click="deleteInfo(det)" id="trash">Cancella <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
         </div>    
    
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div ng-include src="'sezione/socio/templates/socioForm.html'"></div>
         </div>
     </div>

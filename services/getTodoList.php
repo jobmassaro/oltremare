@@ -7,7 +7,7 @@ if($user_level!='1'){header('Location: dashboard');}
 $servername = "localhost";
 $username = "root";
 $password = "developer";
-$dbname = "UOLTRE";
+$dbname = "oltremare";
 
 
 $con = new mysqli($servername, $username, $password, $dbname);
