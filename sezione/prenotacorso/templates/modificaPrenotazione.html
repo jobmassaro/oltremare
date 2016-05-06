@@ -1,0 +1,33 @@
+<div class="col-md-5">
+<form class="form-horizontal alert alert-warning" id="corsiPrenotati" ng-submit="UpdatePrenotazione(corsipr)" hidden>
+<h3 class="text-center">Aggiornamento</h3>
+	<div class="form-group">
+		<label for="Nome">Nome</label>
+		<input type="text" class="form-control" ng-model="corsipr.nome" value="{{corsipr.nome}}">
+	</div>
+	<div class="form-group">
+		<label for="Cognome">Cognome</label>
+		<input type="text" class="form-control" ng-model="corsipr.cognome" value="{{corsipr.cognome}}">
+	</div>
+	
+	<div class="form-group">
+		<label for="Indirizzo">Email</label>
+		<input type="text" class="form-control" ng-model="corsipr.email" value="{{corsipr.email}}">
+	</div>
+	<div class="form-group">
+		<label for="Numcivico">Corso</label>
+		<input type="text" class="form-control" ng-model="corsipr.corso_prenotato" value="{{corsipr.corso_prenotato}}">
+	</div>
+	<div class="form-group">
+		<label for="Cap">Periodo</label>
+		<input type="text" class="form-control" ng-model="corsipr.periodo_prenotato" value="{{corsipr.periodo_prenotato}}">
+	</div>
+	<div class="form-group">
+		<label for="Citta">Data di Prenotazione</label>
+		<input type="text" class="form-control" ng-model="corsipr.indata" value="{{corsipr.indata}}">
+	</div>
+	<div class="form-group">
+		<button class="btn btn-warning">Aggiorna</button>
+	</div>
+</form>
+</div>

@@ -27,11 +27,8 @@ $email = mysqli_real_escape_string($mysqli, $data->email);
 $whatsapp= mysqli_real_escape_string($mysqli, $data->whatsapp);
 $facebook = mysqli_real_escape_string($mysqli, $data->facebook);
 
-$sql = "UPDATE cv_amico SET nome='".$nome . "',cognome='" . $cognome. "',telefono='" .$telefono ."',email='" . $email . "',whatsapp='" . $whatsapp . "',facebook ='" . $facebook. "' WHERE id_utente=". $id_utente ." AND id=" .$id;
-/*
-$sql = "INSERT INTO cv_barche (id_utente,nome,cognome,email,facebook,whatsapp) VALUES (" .$id_utente . ",'". $nome . "','". $cognome .  "','" . $email 
-  ."','". $facebook."','". $whatsapp. "')";
-*/
+$sql = "INSERT INTO cv_amico (id_utente,nome,cognome,email, telefono, facebook,whatsapp) VALUES (" .$id_utente . ",'". $nome . "','". $cognome .  "','" . $email 
+  ."','" .$telefono ."','". $facebook."','". $whatsapp. "')";
 $result = $mysqli->query($sql);
   $arr = array();
     if(mysqli_num_rows($result) != 0) 

@@ -1,68 +1,72 @@
 <form class="form-horizontal alert alert-warning" id="frmUpdate" ng-submit="updateFormazione(editform)" hidden>
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Nome:</label>
+		<label for="tipo"  class="col-sm-2 control-label">Nome</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="editform.nome" value="{{editform.nome}}">
+			<input type="text" class="form-control" ng-model="editform.nome" value="{{editform.nome}}" >
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Cognome:</label>
+		<label for="tipo"  class="col-sm-2 control-label">Cognome</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="editform.cognome" value="{{editform.cognome}}">
+			<input type="text" class="form-control" ng-model="editform.cognome" value="{{editform.cognome}}" >
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Attivita':</label>
+		<label for="tipo"  class="col-sm-2 control-label">Scuola Oltremare</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="editform.attivita" value="{{editform.attivita}}">
+			<input type="text" class="form-control" ng-model="editform.sede" value="{{editform.sede}}" placeholder="OLTREMARE">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Scuola:</label>
+		<label for="tipo"  class="col-sm-2 control-label">Corsi</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="editform.scuola" value="{{editform.scuola}}">
+			<select name="provincia" class="col-sm-6" ng-model="editform.corsi_oltremare" >
+		 		<option ng-repeat="x in corsi">{{ x.nome_corso }}</option>
+			</select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Sede:</label>
+		<label for="tipo"  class="col-sm-2 control-label">Data</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="editform.sede" value="{{editform.sede}}">
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Periodo:</label>
-		<div class="col-sm-4">
-			 <input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="editform.anno" value="{{editform.anno}}">
-	
+			<input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="editform.data_corso_oltremare" value="{{editform.data_corso_oltremare}}">
 			
 		</div>
 	</div>
-
+	<hr>
+	<div class="col-md-6"><b>SCUOLE EXTRA</b></div><div class="col-md-6"></div><br /><br />
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Abilitazione:</label>
+		<label for="tipo"  class="col-sm-2 control-label">Presso Scuola</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="editform.abilitazione" value="{{editform.abilitazione}}">
+			<select name="extra" class="col-sm-6" ng-model="editform.scuola_extra" >
+		 		<option ng-repeat="e in extra">{{ e.scuola }}</option>
+			</select>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Presso Scuola:</label>
+		<label for="tipo"  class="col-sm-2 control-label">Corso</label>
 		<div class="col-sm-4">
-			<input type="text" class="form-control" ng-model="editform.presso_scuola" value="{{editform.presso_scuola}}">
+			<input type="text" class="form-control" ng-model="editform.corso_extra" value="{{editform.corso_extra}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Data</label>
+		<div class="col-sm-4">
+			<input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="editform.data_extra" value="{{editform.data_extra}}">
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label for="tipo"  class="col-sm-2 control-label">Anno:</label>
+		<label for="tipo"  class="col-sm-2 control-label">Abilitazioni</label>
 		<div class="col-sm-4">
-			<input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="editform.nellanno" value="{{editform.nellanno}}">
+			<input type="text" class="form-control" ng-model="editform.abilitazionioni" value="{{editform.abilitazionioni}}">
 		</div>
 	</div>
 
 
 	<div class="form-group">
-		<button class="btn btn-warning" ng-disabled="editform.$invalid">Aggiorna</button>
+		<button class="btn btn-warning" ng-disabled="editform.$invalid">AGGIUNGI</button>
 	</div>
 
 </form>

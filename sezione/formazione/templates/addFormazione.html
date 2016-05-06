@@ -1,0 +1,73 @@
+<div ng-repeat="f in formazionedetails">
+<form class="form-horizontal alert alert-warning" id="frmAdd" ng-submit="addFormazione(f)" hidden>
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Nome</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="f.nome" value="{{f.nome}}" readonly>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Cognome</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="f.cognome" value="{{f.cognome}}" readonly>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Scuola Oltremare</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="f.sede" value="{{f.sede}}" placeholder="OLTREMARE" readonly >
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Corsi</label>
+		<div class="col-sm-4">
+			<select name="provincia" class="col-sm-6" ng-model="f.corsi_oltremare" >
+		 		<option ng-repeat="x in corsi">{{ x.nome_corso }}</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Data</label>
+		<div class="col-sm-4">
+			<input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="f.data_corso_oltremare" value="{{f.data_corso_oltremare}}">
+			
+		</div>
+	</div>
+	<hr>
+	<div class="col-md-6"><b>SCUOLE EXTRA</b></div><div class="col-md-6"></div><br /><br />
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Presso Scuola</label>
+		<div class="col-sm-4">
+			<select name="extra" class="col-sm-6" ng-model="f.scuola_extra" >
+		 		<option ng-repeat="e in extra">{{ e.scuola }}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Corso</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="f.corso_extra" value="{{f.corso_extra}}">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Data</label>
+		<div class="col-sm-4">
+			<input type="text" name="date" ng-flat-datepicker datepicker-config="datepickerConfig" ng-model="f.data_extra" value="{{f.data_extra}}">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="tipo"  class="col-sm-2 control-label">Abilitazioni</label>
+		<div class="col-sm-4">
+			<input type="text" class="form-control" ng-model="f.abilitazionioni" value="{{f.abilitazionioni}}">
+		</div>
+	</div>
+
+
+	<div class="form-group">
+		<button class="btn btn-info" ng-disabled="editform.$invalid">AGGIUNGI</button>
+	</div>
+
+</form>

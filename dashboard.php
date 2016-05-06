@@ -101,20 +101,20 @@ list($timeout_enabled, $warning_title, $warning_message, $inactivity_timer, $ina
 									<!-- Start Panel -->
 									<div class="col-lg-6">
 										<div class="panel">
-											<div class="panel-content">
+											<!--<div class="panel-content">
 												<label for="income" style="width:100%;" >Traffic History<br />
 												<canvas id="income" style="width:100%;" height="150"></canvas>
 												</label>
-											</div>
+											</div>-->
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="panel">
-											<div class="panel-content">
+											<!--<div class="panel-content">
 												<label for="dt" style="width:100%;">Device Type Breakdown<br />
 												<canvas id="dt" style="width:100%;" height="150"></canvas>
 												</label>
-											</div>
+											</div> -->
 										</div>
 									</div>
 									

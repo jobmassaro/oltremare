@@ -14,9 +14,15 @@
 </style>
 
 <div class="row">
+<p></p>
+<p></p>
     <div class="table-responsive" ng-controller="FormazioneCtrl" id="formazioneForm">
         <div class="form-group">
+                 <button class="well well-sm" ng-show="show_form" ng-click="nuovoCorso(details)" id="edit" >Aggiungi<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        </div>
+            <div ng-include src="'sezione/formazione/templates/addFormazione.html'"></div>
             <div ng-include src="'sezione/formazione/templates/editFormazione.html'"></div>
+            
 
 
 
@@ -26,39 +32,29 @@
             <!-- -->
               
 
-
-
-
-
-
-
-
-             
-
-
-
             <table class="table table-hover">
+
             <tr>
                 <th>Nome</th>
                 <th>Cognome</th>
-                <th>Attivita</th>
                 <th>Scuola</th>
-                <th>Sede</th>
-                <th>Anno</th>
-                <th>Abilitazione</th>
-                <th>Presso Scuola</th>
-                <th>Anno</th>
+                <th>Corso</th>
+                <th>Data</th>
+                <th>Scuola non Oltremare</th>
+                <th>Corso Scuola</th>
+                <th>Data</th>
+                <th>Abilitazionioni</td>
             </tr>
             <tr ng-repeat="detail in details| filter:search_query" class="well well-sm" id="generale">
                 <td><span>{{detail.nome}}</span></td>
                 <td >{{detail.cognome}}</td>
-                <td>{{detail.attivita}}</td>
-                <td>{{detail.scuola}}</td>
                 <td>{{detail.sede}}</td>
-                <td>{{detail.anno}}</td>
-                <td>{{detail.abilitazione}}</td>
-                <td>{{detail.presso_scuola}}</td>
-                <td>{{detail.nellanno}}</td>
+                <td>{{detail.corsi_oltremare}}</td>
+                <td>{{detail.data_corso_oltremare}}</td>
+                <td>{{detail.scuola_extra}}</td>
+                <td>{{detail.corso_extra}}</td>
+                <td>{{detail.data_extra}}</td>
+                <td>{{detail.abilitazionioni}}</td>
                 <td><button class="btn btn-warning" ng-click="editFormazione(detail)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button></td>
                 <td><button class="btn btn-danger" ng-click="deleteFormazione(detail)" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
             </tr>

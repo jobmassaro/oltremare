@@ -61,7 +61,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 											}?>
 											<!-- Username -->
 											<div class="control-group">
-												<label class="control-label" for="textinput">Inserisci <b>Username</b> or <b>E-mail</b> </label>
+												<label class="control-label" for="textinput">Inserisci <b>E-mail</b> </label>
 												<div class="controls">
 												<input id="textinput" name="email" type="text" placeholder="username" class="input-xlarge">
 												</div>

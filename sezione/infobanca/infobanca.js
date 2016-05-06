@@ -41,6 +41,7 @@ app.controller("AmministrazioneCtrl",function($scope, $http){
 				{
 					getAmministrazione();
 					$('#amministrazioneForm').css('display', 'none');
+					location.reload(); 
 				}
 			})
 	}

@@ -21,15 +21,15 @@ $id = mysqli_real_escape_string($mysqli, $data->id);
 $id_utente = mysqli_real_escape_string($mysqli, $data->id_utente);
 $nome = mysqli_real_escape_string($mysqli, $data->nome);
 $cognome = mysqli_real_escape_string($mysqli, $data->cognome);
-$attivita = mysqli_real_escape_string($mysqli, $data->attivita);
-$scuola = mysqli_real_escape_string($mysqli, $data->scuola);
 $sede = mysqli_real_escape_string($mysqli, $data->sede);
-$anno= mysqli_real_escape_string($mysqli, $data->anno);
-$abilitazione = mysqli_real_escape_string($mysqli, $data->abilitazione);
-$presso_scuola = mysqli_real_escape_string($mysqli, $data->presso_scuola);
-$nellanno = mysqli_real_escape_string($mysqli, $data->nellanno);
+$corsi_oltremare = mysqli_real_escape_string($mysqli, $data->corsi_oltremare);
+$data_corso_oltremare= mysqli_real_escape_string($mysqli, $data->data_corso_oltremare);
+$scuola_extra = mysqli_real_escape_string($mysqli, $data->scuola_extra);
+$corso_extra = mysqli_real_escape_string($mysqli, $data->corso_extra);
+$data_extra = mysqli_real_escape_string($mysqli, $data->data_extra);
+$abilitazionioni = mysqli_real_escape_string($mysqli, $data->abilitazionioni);
 
-$sql = "UPDATE cv_formazione_utente SET id_utente =".$id_utente .",nome='".$nome . "',cognome='" . $cognome. "',attivita='" .$attivita ."',scuola='". $scuola ."',sede='" . $sede . "',anno='" . $anno . "',abilitazione ='" . $abilitazione. "',presso_scuola='".  $presso_scuola ."',nellanno='". $nellanno ."' WHERE id_utente=". $id_utente ." AND id=" .$id;
+$sql = "UPDATE cv_formazione_oltremare SET id_utente =".$id_utente .",nome='".$nome . "',cognome='" . $cognome. "',sede='" .$sede ."',corsi_oltremare='" . $corsi_oltremare . "',data_corso_oltremare='" . $data_corso_oltremare . "',scuola_extra ='" . $scuola_extra. "',corso_extra='".  $corso_extra ."',data_extra='". $data_extra ."',abilitazionioni='" .$abilitazionioni ."' WHERE id_utente=". $id_utente ." AND id=" .$id;
 
 
 $result = $mysqli->query($sql);
@@ -40,7 +40,7 @@ $result = $mysqli->query($sql);
        {
          $arr[] = $row;
        }
-       $myfile = fopen("barche.json", "w") or die("Unable to open file!");
+       $myfile = fopen("formazione.json", "w") or die("Unable to open file!");
        $txt =json_encode($arr);
        fwrite($myfile, $txt);
        fclose($myfile);

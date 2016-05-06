@@ -28,7 +28,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 
 
 
-  $sql = "SELECT * from cv_formazione_oltremare ORDER BY nome_corso ASC";
+  $sql = "SELECT * from cv_formazione ORDER BY nome_corso ASC";
   $result = $mysqli->query($sql);
   $arr = array();
     if(mysqli_num_rows($result) != 0) 

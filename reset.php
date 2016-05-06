@@ -66,13 +66,13 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 												</div>
 											</div>
 											<div class="control-group">
-												<label class="control-label" for="textinput">New Password</label>
+												<label class="control-label" for="textinput">Nuova Password</label>
 												<div class="controls">
 												<input id="textinput" name="new_pass" type="password" placeholder="" class="input-xlarge" required>
 												</div>
 											</div>
 											<div class="control-group">
-												<label class="control-label" for="textinput">Confirm New Password</label>
+												<label class="control-label" for="textinput">Conferma la nuova password</label>
 												<div class="controls">
 												<input id="textinput" name="c_pass" type="password" placeholder="" class="input-xlarge" required>
 												</div>

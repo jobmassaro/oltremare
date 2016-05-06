@@ -24,13 +24,17 @@
 	</a>
 </li>
 
-<li class="side-menu menu-item <?php if($page=='formazine.php'){echo 'active';}?>">
-	<a href="prenotacorso.php">
-		<i class="fa fa-bookmark" aria-hidden="true"></i><?php echo 'PRENOTA CORSO';?>
+<li class="side-menu menu-item <?php if($page=='scuolextra.php'){echo 'active';}?>">
+	<a href="scuolextra.php">
+		<i class="fa fa-list" aria-hidden="true"></i><?php echo 'SCUOLE EXTRA';?>
 	</a>
 </li>
 
-
+<li class="side-menu menu-item <?php if($page=='prenotazioni.php'){echo 'active';}?>">
+	<a href="prenotazioni.php">
+		<i class="fa fa-bookmark" aria-hidden="true"></i><?php echo 'PRENOTAZIONI';?>
+	</a>
+</li>
 
 <!-- -->
 
@@ -59,6 +63,11 @@
 	<a href="dashboard.php">
 		<i class="fa-users"></i> <?php echo $lang['PROFILE_USER'];?><br />
 	</a>   
+</li>
+<li class="side-menu menu-item <?php if($page=='prenotacorso.php'){echo 'active';}?>">
+	<a href="prenotacorso.php">
+		<i class="fa fa-bookmark" aria-hidden="true"></i><?php echo 'PRENOTA CORSO';?>
+	</a>
 </li>
 <?php }else if($user_level=='3'){ ?>
 <li class="side-menu menu-item <?php if($page=='dashboard.php'){echo 'active';}?>">

@@ -6,6 +6,7 @@ if($user_level!='1'){header('Location: dashboard.php');}
 
 include('data/data-functions.php');
 include('lang/translate.php');
+include('common/JSON.php');
 //SITE SETTINGS
 list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all_settings();
 setlocale(LC_MONETARY, 'it_IT');
@@ -320,7 +321,7 @@ $arr1 .="]";
            } 
 
       //TAB FORMAZIONE
-          $sql = "SELECT * from cv_formazione_utente  WHERE id_utente =" .$uid ;
+          $sql = "SELECT * from cv_formazione_oltremare  WHERE id_utente =" .$uid ;
           $result = $mysqli->query($sql);
             $arr = array();
             if(mysqli_num_rows($result) != 0) 
@@ -329,15 +330,13 @@ $arr1 .="]";
                 {
                   $arr[] = $row;  
                 }
-
-             
               $myfile = fopen("sezione/formazione/formazione.json", "w") or die("Unable to open file!");
               $txt =json_encode($arr);
               fwrite($myfile, $txt);
               fclose($myfile);
 
            }else{
-               $sql = "INSERT INTO cv_formazione_utente (id_utente,nome,cognome) SELECT id_utente, name as nome, surname as cognome FROM cv_generale WHERE id_utente = ". $uid;
+               $sql = "INSERT INTO cv_formazione_oltremare (id_utente,nome,cognome) SELECT id_utente, name as nome, surname as cognome FROM cv_generale WHERE id_utente = ". $uid;
                $result = $mysqli->query($sql);
                $arr = array();
                 if(mysqli_num_rows($result) != 0)
@@ -390,7 +389,7 @@ $arr1 .="]";
 
 
       
-          //TAB FORMAZIONE
+          //TAB Recapito
           $sql = "SELECT * from cv_recapiti  WHERE id_utente =" .$uid ;
           $result = $mysqli->query($sql);
             $arr = array();
@@ -426,17 +425,24 @@ $arr1 .="]";
    
 
           //TAB STAMPA
-          $sql = "SELECT g.name, g.surname, s.fiv, s.fiv_scadenza, s.tess_uisp, s.uisp_numero, f.abilitazione, f.attivita, f.scuola, f.sede, f.anno  FROM oltremare.cv_socio as s, oltremare.cv_generale as g, oltremare.cv_formazione_utente as f where s.id_utente =" .$uid . " and f.id_utente =" .$uid . " and g.id_utente =" .$uid ;
+
+          $sql = "SELECT f.nome, f.cognome, s.fiv, s.fiv_scadenza, s.tess_uisp, s.uisp_numero, f.corsi_oltremare, f.sede, f.sede, f.data_corso_oltremare, f.corso_extra, f.scuola_extra,f.data_extra, f.abilitazionioni  FROM oltremare.cv_socio as s, oltremare.cv_formazione_oltremare as f where s.id_utente =" .$uid . " and f.id_utente =" .$uid . " and s.id_utente =" .$uid ;
           $result = $mysqli->query($sql);
+          $i = 0;
           $arr = array();
           $arr1 = array();
           if(mysqli_num_rows($result) != 0) 
            {
              while($row = mysqli_fetch_assoc($result)) 
              {
+
                 $arr1[] = $row;
-                $arr = $row['name'] .';'. $row['surname'] .';'.$row['fiv'] .';'.$row['fiv_scadenza'] .';'.$row['tess_uisp'] .';'.$row['uisp_numero'] .';'.$row['abilitazione']. ';' . $row['attivita'] . ';' .$row['scuola'] . ';' .$row['sede']. ';' .$row['anno'];
-                
+                if($i == 0){
+                  $arr = $row['nome'] .';'. $row['cognome'] .';'.$row['fiv'] .';'.$row['fiv_scadenza'] .';'.$row['tess_uisp'] .';'.$row['uisp_numero'] .';'. $row['corsi_oltremare'] . ';' .$row['sede']. ';'. $row['sede'] . ';' .$row['data_corso_oltremare']. ';' .$row['corso_extra'] . ';' .$row['scuola_extra'] .';' .$row['data_extra'] . ';' . $row['abilitazionioni'];
+                  $i++;
+                }
+                else
+                  $arr .= $row['nome'] .';'. $row['cognome'] .';'.$row['fiv'] .';'.$row['fiv_scadenza'] .';'.$row['tess_uisp'] .';'.$row['uisp_numero'] .';'. $row['corsi_oltremare'] . ';' .$row['sede']. ';'. $row['sede'] . ';' .$row['data_corso_oltremare']. ';' .$row['corso_extra'] . ';' .$row['scuola_extra'] .';' .$row['data_extra'] . ';' . $row['abilitazionioni'];
 
              }
 
@@ -554,19 +560,16 @@ $arr1 .="]";
       </md-tab>
        <md-tab label="Recapiti">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Recapiti</h1>
           <div ng-include src="'sezione/recapiti/index.php'"></div>
         </md-content>
       </md-tab>
        <md-tab label="Invita Amico">
         <md-content class="md-padding">
-          <h1 class="md-display-2">Invita Amico</h1>
           <div ng-include src="'sezione/amico/index.php'"></div>
         </md-content>
       </md-tab>
        <md-tab label="STAMPA CV">
         <md-content class="md-padding">
-          <h1 class="md-display-2">STAMPA CV</h1>
           <div ng-include src="'sezione/stampa/index.php'"></div>
         </md-content>
       </md-tab>

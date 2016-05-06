@@ -66,11 +66,11 @@ button:hover {
         
      <div class="col-md-5">
         <div class="form-group">
-           <div class="well well-sm" id="generale">Nome: &nbsp;<strong>{{detail.name}}</strong></div>
+           <div class="well well-sm" id="generale">Nome: &nbsp;<strong>{{detail.nome}}</strong></div>
         </div>
 
         <div class="form-group">
-             <div class="well well-sm" id="generale">Cognome: &nbsp;<strong>{{detail.surname}}</strong></div>
+             <div class="well well-sm" id="generale">Cognome: &nbsp;<strong>{{detail.cognome}}</strong></div>
         </div>
     </div> 
     <div class="col-md-5">
@@ -84,7 +84,7 @@ button:hover {
             <div class="well well-sm" id="generale">Tessera UISP: &nbsp;<strong>{{detail.tess_uisp}}</strong></div>
         </div>
          <div class="form-group"> 
-            <div class="well well-sm" id="generale">Tessera UISP: &nbsp;<strong>{{detail.tess_uisp}}</strong></div>
+            <div class="well well-sm" id="generale">Numero UISP: &nbsp;<strong>{{detail.uisp_numero}}</strong></div>
         </div>
         
        
@@ -94,16 +94,16 @@ button:hover {
     <legend>Attivita' Oltremare</legend> 
     	<div class="col-md-5">
         	<div class="form-group">
-            	 <div class="well well-sm" id="generale">Attivita: &nbsp;<strong>{{detail.attivita}}</strong></div>
+            	 <div class="well well-sm" id="generale">Attivita: &nbsp;<strong>{{detail.corsi_oltremare}}</strong></div>
         	</div>
         	 <div class="form-group">
-	           <div class="well well-sm" id="generale">Scuola: &nbsp;<strong>{{detail.scuola}}</strong></div>
+	           <div class="well well-sm" id="generale">Scuola: &nbsp;<strong>{{detail.sede}}</strong></div>
     	    </div>
     	    <div class="form-group">
 	           <div class="well well-sm" id="generale">Sede: &nbsp;<strong>{{detail.sede}}</strong></div>
     	    </div>
     	    <div class="form-group">
-	           <div class="well well-sm" id="generale">Anno: &nbsp;<strong>{{detail.anno}}</strong></div>
+	           <div class="well well-sm" id="generale">Anno: &nbsp;<strong>{{detail.data_corso_oltremare}}</strong></div>
     	    </div>
     </div> 
 </fieldset>
@@ -111,16 +111,16 @@ button:hover {
     <legend>Attivita' in altre scuole Oltremare</legend> 
     	<<div class="col-md-5">
         	<div class="form-group">
-            	 <div class="well well-sm" id="generale">Attivita: &nbsp;<strong>{{detail.attivita}}</strong></div>
+            	 <div class="well well-sm" id="generale">Attivita: &nbsp;<strong>{{detail.corso_extra}}</strong></div>
         	</div>
         	 <div class="form-group">
-	           <div class="well well-sm" id="generale">Scuola: &nbsp;<strong>{{detail.scuola}}</strong></div>
+	           <div class="well well-sm" id="generale">Scuola: &nbsp;<strong>{{detail.scuola_extra}}</strong></div>
     	    </div>
     	    <div class="form-group">
-	           <div class="well well-sm" id="generale">Sede: &nbsp;<strong>{{detail.sede}}</strong></div>
+	           <div class="well well-sm" id="generale">Sede: &nbsp;<strong>{{}}</strong></div>
     	    </div>
     	    <div class="form-group">
-	           <div class="well well-sm" id="generale">Anno: &nbsp;<strong>{{detail.anno}}</strong></div>
+	           <div class="well well-sm" id="generale">Anno: &nbsp;<strong>{{detail.data_extra}}</strong></div>
     	    </div>
     </div> 
 </fieldset>
@@ -128,7 +128,7 @@ button:hover {
     <legend>Titoli/Abilitazioni Conseguiti</legend> 
     	<div class="col-md-5">
         <div class="form-group">
-           <div class="well well-sm" id="generale">Abilitazione: &nbsp;<strong>{{detail.abilitazione}}</strong></div>
+           <div class="well well-sm" id="generale">Abilitazione: &nbsp;<strong>{{detail.abilitazionioni}}</strong></div>
         </div>
     </div> 
 </fieldset>

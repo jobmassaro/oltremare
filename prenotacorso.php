@@ -2,7 +2,6 @@
 //PROTECT THIS PAGE - REQUIRE LOGIN TO ACCESS
 include('auth/protect.php');
 //REDIRECT IF NOT ADMIN LEVEL 1 USER
-if($user_level!='1'){header('Location: dashboard.php');}
 
 include('data/data-functions.php');
 include('lang/translate.php');
@@ -27,7 +26,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 
 	
 
-  $sql = "SELECT * from cv_formazione_oltremare WHERE attivo = 'True' ORDER BY nome_corso ASC " ;
+  $sql = "SELECT * from cv_formazione WHERE attivo = 'True' ORDER BY nome_corso ASC " ;
   $result = $mysqli->query($sql);
   $arr = array();
     if(mysqli_num_rows($result) != 0) 
@@ -42,6 +41,29 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
        fwrite($myfile, $txt);
        fclose($myfile);
     }
+
+    $sql = "SELECT id, id_utente, name, surname, email FROM oltremare.cv_members WHERE id = ". $user_id ." AND surname='" .$user_surname ."' AND email='" .$user_email ."'";
+
+    $result = $mysqli->query($sql);
+    $arr = array();
+    if(mysqli_num_rows($result) != 0) 
+    {  
+       while($row = mysqli_fetch_assoc($result)) 
+       {
+           $arr[] = $row;
+       }
+
+       $myfile = fopen("sezione/prenotacorso/utente.json", "w") or die("Unable to open file!");
+       $txt =json_encode($arr);
+       fwrite($myfile, $txt);
+       fclose($myfile);
+    }
+
+
+
+
+
+
 
 
 ?>
@@ -131,15 +153,15 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 
 	
 	
-
+<div ng-repeat="n in user">
     <div class="col-md-10">
+      
 		<form class="form-horizontal" id="" ng-submit="prenotaCorso(n)" >
-
-			<div class="col-md-10">
+      <div class="col-md-10">
 				<div class="form-group">
     	      	<label for="tipo"  class="col-sm-3 control-label">Nome:</label>
 	        	    <div class="col-sm-4">
-	        	    	<input type="text" class="form-control" value="<?php echo $user_name; ?>">
+	        	    	<input type="text" class="form-control" ng-model="n.name" value="{{ n.name }}">
         	    	</div>
     			</div>
     		</div>
@@ -147,7 +169,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 				<div class="form-group">
     	      	<label for="tipo"  class="col-sm-3 control-label">Cognome:</label>
 	        	    <div class="col-sm-4">
-    	        	    <input type="text" class="form-control" value="<?php echo $user_surname; ?>">
+    	        	    <input type="text" class="form-control" ng-model="n.surname" value="{{ n.surname }}">
         	    	</div>
     			</div>
     		</div>
@@ -155,7 +177,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 				<div class="form-group">
     	      	<label for="tipo"  class="col-sm-3 control-label">Email:</label>
 	        	    <div class="col-sm-4">
-    	        	    <input type="text" class="form-control" value="<?php echo $user_email ; ?>">
+    	        	    <input type="text" class="form-control" ng-model="n.email" value="{{ n.email }}">
         	    	</div>
     			</div>
     		</div>
@@ -175,10 +197,10 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
     	    	  <label for="tipo"  class="col-sm-3 control-label">Periodo :</label>
         	    	<div class="col-sm-4">
             	    	<select class="form-control" ng-model="n.stagione" >
-                	    	<option value="1">Primavera</option>
-                			<option value="2">Estate</option>
-	                		<option value="3">Autunno</option>
-    	            		<option value="4">Inverno</option>
+                	    	<option value="primavera">Primavera</option>
+                			<option value="estate">Estate</option>
+	                		<option value="autunno">Autunno</option>
+    	            		<option value="inverno">Inverno</option>
         	        	</select>
             		</div>
     		</div>

@@ -53,6 +53,8 @@ app.controller("AmicoCtrl",function($scope, $http){
 
 
 	$scope.addAmico = function(info){
+		console.log("info");
+		console.log(info);
 		$http.post('sezione/amico/addAmico.php',{"id": info[0].id, "id_utente": info[0].id_utente, "nome":info.nome,
 				"cognome":info.cognome,"email":info.email,"telefono":info.telefono,
 				 "facebook": info.facebook,"whatsapp":info.whatsapp
