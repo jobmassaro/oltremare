@@ -37,7 +37,7 @@ $scope.prenotaCorso = function(info)
 			if (data == true) 
 				{
 					alert('Corso Prenotato');
-					location.href = 'http://localhost/oltremare/dashboard.php';
+					location.href = 'http://oltremare.cloudapp.net/dashboard.php';
 					
 				}
 			});
