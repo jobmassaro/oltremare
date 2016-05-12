@@ -30,6 +30,7 @@ $result = $mysqli->query($sql);
        $arr[] = $row;
    }
    unlink("sezione/prenotacorso/utente.json");
+   unlink("sezione/prenotacorso/corsi_prenotati.json");
    $myfile = fopen("sezione/prenotacorso/corsi_prenotati.json", "w") or die("Unable to open file!");
    $txt =json_encode($arr);
    fwrite($myfile, $txt);
