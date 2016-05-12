@@ -87,26 +87,26 @@ list($timeout_enabled, $warning_title, $warning_message, $inactivity_timer, $ina
 if($user_level=='2')
 {
 
-    if(!empty($user_id) && !empty($user_email))
-    {
-    //members WHERE email = ? LIMIT 1
-        $sql = "SELECT id_utente FROM cv_members  WHERE id = " .$user_id ." AND email = '". $user_email ."' LIMIT 1";
+  	if(!empty($user_id) && !empty($user_email))
+  	{
+  	//members WHERE email = ? LIMIT 1
+  		$sql = "SELECT id_utente FROM cv_members  WHERE id = " .$user_id ." AND email = '". $user_email ."' LIMIT 1";
       $result = $mysqli->query($sql);
       while($row = mysqli_fetch_assoc($result)) 
          {
            $uid = $row['id_utente'];
          }
-        
-    
-    }else if(!empty($user_id) && !empty($user_name))
-    {
-        $sql = "SELECT id_utente FROM cv_members  WHERE id = " .$user_id ." AND name = '". $user_name ."' LIMIT 1";
+  		
+  	
+  	}else if(!empty($user_id) && !empty($user_name))
+  	{
+  		$sql = "SELECT id_utente FROM cv_members  WHERE id = " .$user_id ." AND name = '". $user_name ."' LIMIT 1";
       $result = $mysqli->query($sql);
       while($row = mysqli_fetch_assoc($result)) 
          {
            $uid = $row['id_utente'];
          }
-    }
+  	}
 
     
     $sql = "SELECT * FROM cv_generale where id_utente =" . $uid ;

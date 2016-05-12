@@ -21,7 +21,7 @@ $data = json_decode(file_get_contents("php://input"));
 $id = mysqli_real_escape_string($mysqli, $data->id);
 $id_utente = mysqli_real_escape_string($mysqli, $data->id_utente);
 
-$sql = "DELETE FROM cv_formazione_utente WHERE id=" . $id ." AND id_utente =" .$id_utente;
+$sql = "DELETE FROM cv_formazione_oltremare WHERE id=" . $id ." AND id_utente =" .$id_utente;
 $result = $mysqli->query($sql);
   $arr = array();
     if(mysqli_num_rows($result) != 0) 

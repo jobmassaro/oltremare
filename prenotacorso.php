@@ -42,8 +42,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
        fclose($myfile);
     }
 
-    $sql = "SELECT id, id_utente, name, surname, email FROM oltremare.cv_members WHERE id = ". $user_id ." AND surname='" .$user_surname ."' AND email='" .$user_email ."'";
-
+    $sql = "SELECT id, id_utente, name, surname, email FROM oltremare.cv_members WHERE id = ". $user_id ." OR surname='" .$user_surname ."' AND email='" .$user_email ."'";
     $result = $mysqli->query($sql);
     $arr = array();
     if(mysqli_num_rows($result) != 0) 
@@ -52,7 +51,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
        {
            $arr[] = $row;
        }
-
+       unlink("sezione/prenotacorso/utente.json");
        $myfile = fopen("sezione/prenotacorso/utente.json", "w") or die("Unable to open file!");
        $txt =json_encode($arr);
        fwrite($myfile, $txt);
@@ -226,6 +225,10 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
  <script src="node_modules/angular-aria/angular-aria.js"></script>
  <script src="node_modules/angular-material/angular-material.js"></script>
  <script src="node_modules/moment/moment.js"></script>
+<script type="text/javascript">
+ // location.reload(); 
+</script>
+
 <script type="text/javascript">
   
 var app = angular.module('prcorsi',['ngMaterial']);

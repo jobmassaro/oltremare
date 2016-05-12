@@ -12,14 +12,18 @@ include("../email/class.phpmailer.php");
 	$input_username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
 	$input_phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING);
 
+
 		
 	$get_settings = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT require_email_activation FROM ".$prefix."rl_settings WHERE id = 1"));
 	$require_email = $get_settings['require_email_activation'];
 
 	
+	
+
 	//check for existing email
 	if($input_email == ''|| count($input_email)== 0)
 	{
+
 		$input_email ="example@example.com";
 		$check_email = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM ".$prefix."members WHERE email='".$input_email."'"));
 		$email_exists = $check_email['email'];
@@ -27,6 +31,8 @@ include("../email/class.phpmailer.php");
 	}
 
 		//check for existing username
+
+	
 	$check_email = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM ".$prefix."members WHERE username='".$input_username."'"));
 	$username_exists = $check_email['username'];
 
@@ -34,6 +40,7 @@ include("../email/class.phpmailer.php");
 
 	if($username_exists=='' && $email_exists=='')
 	{
+	
 
 		$get_level = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT default_user_level FROM ".$prefix."rl_settings WHERE id=1"));
 		$default_user_level = $get_level['default_user_level'];
@@ -52,13 +59,29 @@ include("../email/class.phpmailer.php");
 		}	
 
 		$sql = "SELECT max(id_utente)+5 as max  FROM cv_members";
+		
 		$result = $mysqli->query($sql);
-		while($row = mysqli_fetch_assoc($result)) 
-        {
-        	$id_utente = $row['max'];
+		if(mysqli_num_rows($result) != 0) 
+      	{  
+      		var_dump(mysqli_num_rows($result));
+			while($row = mysqli_fetch_assoc($result)) 
+        	{
+        		$id_utente = $row['max'];
+        		
+        		if($id_utente == '' || $id_utente == NULL)
+        		{
+        			$id_utente = '50001';
+        		}
+        	}
+        }else{
+        	
+        		
         }
+        
+        /*var_dump('$id_utente =>');
+        var_dump($id_utente);
 
-        $query = "INSERT INTO " . 
+        /*$query = "INSERT INTO " . 
 		 $prefix ."members ( id, id_utente, name, surname, username, email , password, terms, email_key, user_level, reg_date,
 		 	status,
 		 	plan_id,
@@ -70,10 +93,18 @@ include("../email/class.phpmailer.php");
  			certificatomedico,
  			profilo_pic,
  			certificato_pic) VALUES " .
-			"(null ,". $id_utente.",'" . $input_name ."', '". $input_surname ."', '" . $input_username ."', '" . $input_email ."', '" . $hash ."','" .$terms ."','" 
+			"(null ". $id_utente.",'" . $input_name ."', '". $input_surname ."', '" . $input_username ."', '" . $input_email ."', '" . $hash ."','" .$terms ."','" 
 		 	. $email_key ."','" . $default_user_level ."','" . $reg_date ."','" . $status ."','','','','','" . $input_phone ."','','','','');"; 
+		*/
+			$query = "INSERT INTO " . 
+		 	$prefix ."members ( id, id_utente, name, surname, username, email , password, terms, email_key, user_level, reg_date,
+		 	status,
+		 	telefono ) VALUES " .
+			"(null ,". $id_utente.",'" . $input_name ."', '". $input_surname ."', '" . $input_username ."', '" . $input_email ."', '" . $hash ."','" .$terms ."','" 
+		 	. $email_key ."','" . $default_user_level ."','" . $reg_date ."','" . $status ."','" . $input_phone ."');"; 
 
 			
+
 			if ($mysqli->query($query) === TRUE) //1
 			{
 

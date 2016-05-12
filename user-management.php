@@ -93,7 +93,7 @@ unlink("sezione/infobanca/infobanca.json");
 													<form class="form-inline">
                 									<div class="form-group">
                   										<label>Cerca </label>
-                  										<input type="text" ng-model="search" class="form-control" placeholder="Cerca" size="55"/>
+                  										<input type="text" ng-model="search.$" class="form-control" placeholder="Cerca" size="55"/>
                 									</div>            
 												</form>
 												</div>
@@ -202,7 +202,7 @@ unlink("sezione/infobanca/infobanca.json");
 					</div><br><br>
 					 <label class="col-md-3 control-label" for="textinput"><?php echo $lang['USERS_TELEFONO'];?></label>  
 					<div class="col-md-9">
-						<input id="textinput" name="phone" type="text" placeholder="" class="form-control input-md" style="width:100%;" required>
+						<input id="textinput" name="phone" type="text" placeholder="" class="form-control input-md" style="width:100%;">
 					</div><br><br>
 					<label class="col-md-3 control-label" for="textinput"><?php echo $lang['USERNAME'];?></label>  
 					<div class="col-md-9">

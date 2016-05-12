@@ -8,7 +8,6 @@ $input_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $get_key = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT * FROM ".$prefix."members WHERE email='".$input_email."'"));
 $email_key = $get_key['email_key'];
 
-
 if($email_key!=''){
   //CONFIRM EMAIL ADDRESS - SEND VALIDATION EMAIL	
   $get_settings = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT site_title, site_email FROM ".$prefix."settings WHERE id=1"));
@@ -39,7 +38,7 @@ if($email_key!=''){
           $email = "oltremare@triosoft.it";
           $message = '<html><body>';
           $message .= "<h4>Ciao ". ucwords($fullname).",</h4>";
-          $message .= "<p>Thank you for joining ".$site_title.".  Please take a minute to verify your email address by simply clicking on the link below:<br><br>";
+          $message .= "<p>Thank you for joining ".$site_title.".  Ancora qualche minuto di pazienza per confermare la mail sotto:<br><br>";
           $message .= '<a href="http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -5).'/verify-email.php?v='.$email_key.'&e='.$encoded_email.'">http://'.substr($_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']), 0, -5).'/verify_email.php?v='.$email_key.'&e='.$encoded_email.'</a>';
           $message .= '<h4>Thank you!<br>'.$site_title.'</h4>';
           $message .= "</body></html>";

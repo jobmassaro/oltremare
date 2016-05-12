@@ -18,8 +18,6 @@ if(isset($_POST['email'], $_POST['p'])){
 	$login = login_with_email($username_email, $password, $mysqli, $prefix);
 	if($login === true){
 			//LOGIN SUCCESSFUL
-
-	
 			$last_login = date("Y-m-d H:i:s");
 			$ud = $mysqli->prepare("UPDATE ".$prefix."members SET last_login = ? WHERE email = '".$username_email."'"); 
 			$ud->bind_param('s', $last_login);
@@ -30,15 +28,30 @@ if(isset($_POST['email'], $_POST['p'])){
 			$get_data = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT email_confirmed FROM ".$prefix."members WHERE email = '".$username_email."'"));
 			$email_confirmed = $get_data['email_confirmed'];
 			$user_level = $_SESSION['user_level'];
+
 			$get_redirect = mysqli_fetch_assoc(mysqli_query($mysqli, "SELECT redirect_login FROM ".$prefix."permission_levels WHERE level = $user_level"));
 			$ld_redirect_login = $get_redirect['redirect_login']; 
+			
+
+			
 			if($ld_redirect_login==''){$ld_redirect_login='../dashboard.php';}
 			if($ld_redirect_login!=''){
 					$redirecting = $ld_redirect_login;
-				}else{
+					
+			}else{
 					$redirecting = $redirect_login;
-				}	
-				if($require_email=='1' && $email_confirmed!='1'){header('Location: ../verify-email.php');}else{header('Location: '.$redirecting);}  
+			}
+
+			if($require_email=='1' && $email_confirmed!='1')
+			{
+
+
+					header('Location: ../verify-email.php');
+				//	header('Location: ../');
+			}
+			else{
+					header('Location: '.$redirecting);
+			}  
     }else{
 			//LOGIN FAILED
 			header('Location: ../login.php?error='.$login.'');
