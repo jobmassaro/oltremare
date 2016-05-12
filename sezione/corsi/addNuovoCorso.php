@@ -20,7 +20,7 @@ $data = json_decode(file_get_contents("php://input"));
 $nome_corso = mysqli_real_escape_string($mysqli, $data->nome_corso);
 $attivo = mysqli_real_escape_string($mysqli, $data->attivo);
 
-$sql = "INSERT INTO cv_formazione_oltremare (nome_corso,attivo) VALUES ('" .$nome_corso . "','". $attivo ."')";
+$sql = "INSERT INTO cv_formazione (nome_corso,attivo) VALUES ('" .$nome_corso . "','". $attivo ."')";
 
 
 $result = $mysqli->query($sql);
