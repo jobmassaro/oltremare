@@ -28,11 +28,11 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 
 // For storing errors:
 $pass_errors = array();
-
+/*
 $q = "SELECT pass FROM cv_members WHERE id=" .$user_id;	
 var_dump($q);
 die();
-
+*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
 
