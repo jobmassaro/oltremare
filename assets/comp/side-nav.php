@@ -45,7 +45,7 @@
 </li>
 <li class="side-menu menu-item <?php if($page=='settings.php' || $page=='rl-settings.php' || $page=='user-levels.php' || $page=='email-welcome.php' || $page=='send-email.php' || $page=='update.php'){echo 'active';}?>" >
 	<a href="#" data-toggle="collapse" data-target="#settings-sub-menu">
-		<i class="fa-cog"></i> <?php echo $lang['SETTINGS'];?>
+		<i class="fa-cog"></i> <?php echo 'IMPOSTAZIONI';?>
 	</a>
 	<ul id="settings-sub-menu" class="collapse">
 		<li class="sub-menu"><a href="settings.php"><i class="fa-list-alt"></i> <?php echo $lang['SITE_SETTINGS'];?></a></li>
@@ -86,11 +86,11 @@
 
 <li class="side-menu menu-item <?php if($page=='forum/'){echo 'active';}?>">
 	<a href="forum/">
-		<i class="fa fa-toggle-on"></i> <?php echo $lang['FORUM'];?>
+		<i class="fa fa-toggle-on"></i> <?php //echo $lang['FORUM'];?>
 	</a>
 </li>
 <li class="side-menu menu-item <?php if($page=='calendario.php'){echo 'active';}?>">
 	<a href="calendario/index.php">
-		<i class="fa fa-calendar"></i> <?php echo $lang['CALENDARIO'];?>
+		<i class="fa fa-calendar"></i> <?php //echo $lang['CALENDARIO'];?>
 	</a>
 </li>

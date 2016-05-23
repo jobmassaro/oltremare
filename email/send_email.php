@@ -1,98 +1,75 @@
 <!DOCTYPE html>
-<html>
-	<head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-<style type="text/css">
-icensed under MIT
-***/
+    <title>Oltremare</title>
 
-body {
-    padding: 0;
-    margin: 0;
-}
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
-html { -webkit-text-size-adjust:none; -ms-text-size-adjust: none;}
-@media only screen and (max-device-width: 680px), only screen and (max-width: 680px) { 
-    *[class="table_width_100"] {
-		width: 96% !important;
-	}
-	*[class="border-right_mob"] {
-		border-right: 1px solid #dddddd;
-	}
-	*[class="mob_100"] {
-		width: 100% !important;
-	}
-	*[class="mob_center"] {
-		text-align: center !important;
-	}
-	*[class="mob_center_bl"] {
-		float: none !important;
-		display: block !important;
-		margin: 0px auto;
-	}	
-	.iage_footer a {
-		text-decoration: none;
-		color: #929ca8;
-	}
-	img.mob_display_none {
-		width: 0px !important;
-		height: 0px !important;
-		display: none !important;
-	}
-	img.mob_width_50 {
-		width: 40% !important;
-		height: auto !important;
-	}
-}
-.table_width_100 {
-	width: 680px;
-}
+    <!-- Custom CSS -->
+    <link href="../assets/css/base.css" rel="stylesheet">
+  
+    <!-- Font Awesome Icons -->
+    <link href="../assets/fonts/css/fa.css" rel="stylesheet">
+    <!-- Webfont -->
+    <link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!-- SweetAlert Plugin -->
+    <link href="../assets/css/plugins/sweetalert.css" rel="stylesheet" media="all">
+    <link href="../bower_components/angular-ui-grid/ui-grid.css">
+      <link href="../bower_components/angular-ui-grid/ui-grid.css">
+      <link href="../assets/css/ng-grid.min.css" rel="stylesheet">
 
-</style>
-</head>
-<body>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
-<!--
-Responsive Email Template by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
--->
-<!--
-Responsive Email Template by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
--->
+  <body>
 
+    
+
+    <div class="container" style="padding-top:150px;">
 <div id="mailsub" class="notification" align="center">
+    <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <img src="../assets/img/logo-oltremare-1985.png">
+                  <h2 class="text-center">Grazie per esserti Registrato!</h2>
+                 <p>Controlla la tua <b>E-mail</b> (se non l’hai ricevuta, verifica nello <b>SPAM</b>)</p>
+                  <div class="panel-body">
+    
+    
+                      
+                      <div class="form-group">
+                        <a href="./" class="btn" style="font-size:22px;">Clicca qui ed <b>Entra</b></a>
+                      </div>
+                     </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>
+    </div><!-- /.container -->
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="min-width: 320px;"><tr><td align="center" bgcolor="#eff3f8">
 
-
-<!--[if gte mso 10]>
-<table width="680" border="0" cellspacing="0" cellpadding="0">
-<tr><td>
-<![endif]-->
-
-<table border="0" cellspacing="0" cellpadding="0" class="table_width_100" width="100%" style="max-width: 680px; min-width: 300px;">
-    <tr><td>
-	</td></tr>
-		<tr><td align="center" bgcolor="#ffffff">
-		<table width="90%" border="0" cellspacing="0" cellpadding="0">
-			<tr><td align="left">
-				<div class="mob_center_bl" style="float: left; display: inline-block;">
-					<table class="mob_center" width="" border="0" cellspacing="0" cellpadding="0" align="left" style="border-collapse: collapse;">
-						<tr><td align="left" valign="middle">
-							<table width="" border="0" cellspacing="0" cellpadding="0" >
-								<tr><td align="left" valign="top" class="mob_center">
-									<a href="http://oltremare.cloudapp.net" target="_blank" style="color: #596167; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">
-									<font face="Arial, Helvetica, sans-seri; font-size: 13px;" size="3" color="#596167">
-										<img src="http://oltremare.cloudapp.net/assets/logos/lplogo-1.png"/>
-									</font></a>
-									<p>Grazie per esserti Registrato! <h4>Controlla la tua E-mail (se non l’hai ricevuta, verifica nello SPAM)</h4></p>
-								</td></tr>
-							</table>						
-						</td></tr>
-					</table></div><!-- Item END--><!--[if gte mso 10]>
-					</td>
-					<td align="right">
-				<![endif]--><!-- 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

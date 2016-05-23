@@ -1,4 +1,5 @@
-<a href="Dump20160506/index.html" ><b>Video</b></a>
+
+<!-- <a href="Dump20160506/index.html" ><b>Video</b></a>-->
  <div id="login-overlay" class="">
       <div class="modal-content">
           <div class="modal-body" style="padding-bottom:-180px">
@@ -9,25 +10,25 @@
                     <form method="post" action="access/process_login.php" class="">
                         
                       <?php if($_GET['logoff']=='1'){
-                          echo '<span class="success-text">You have logged off successfully</span>';
+                          echo '<span class="success-text">Disconnesso con successo</span>';
                       } 
                     if($_GET['v']=='1'){
-                          echo '<span class="success-text"><h3>Email Verified Successfully! Login below.</h3></span>';
+                          echo '<span class="success-text"><h3>Email Verificata con Successo! Login sotto.</h3></span>';
                       } 
                       if($_GET['success']=='1'){
-                          echo '<span class="success-text">Your password has been reset successfully.</span>';
+                          echo '<span class="success-text">Reset della password !</span>';
                       } 
                       if($_GET['error']=='1'){
-                          echo '<span class="red">Invalid Username or Password</span>';
+                          echo '<span class="red">Username or Password Errati</span>';
                       }
                       if($_GET['error']=='2'){
-                          echo '<span class="red">Your account has been locked out for 5 minutes</span>';
+                          echo '<span class="red">Il tuo account è stato bloccato per 5 minuti</span>';
                       }?>
                       <!-- Username -->
                       <div class="control-group">
                         <label class="control-label" for="textinput">Accedi con la tua EMAIL</label>
                         <div class="controls">
-                        <input id="textinput" name="email" type="text" placeholder="" class="form-control">
+                        <input id="textinput" name="email" type="text" placeholder="" class="form-control" width="48" height="48">
                         </div>
                       </div>
 

@@ -42,7 +42,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 </head>
 
 <body>
-     <div class="row">
+     <div class="row" style="margin-top:-85px;">
              <?php include 'common/nav.php'; ?>
          </div>
 	<!-- Page Content -->

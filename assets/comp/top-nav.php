@@ -57,9 +57,12 @@
 							admin_control($admin_user, $lang_u, $lang_a);
 						?>
 						
+						 <li><a href="change_password.php"><i class="fa fa-pencil fa-fw"></i>Cambia Password</a></li>
+
 						<li>
-							<a href="access/logout.php"><i class="icon-danger fa fa-fw fa-circle-notch"></i> <?php echo $lang['LOGOFF'];?></a>
+							<a href="access/logout.php"><i class="icon-danger fa fa-fw fa-circle-notch"></i> Esci</a>
 						</li>
+
 					</ul>
 				</li>
 				<!-- End My Account Dropdown -->

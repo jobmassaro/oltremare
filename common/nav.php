@@ -8,7 +8,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.php">CV.OLTREMARE</a>
+					<img src="assets/img/logo-oltremare-1985.png">
+					
 				</div>
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">

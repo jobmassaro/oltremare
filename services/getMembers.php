@@ -38,15 +38,51 @@ if(mysqli_num_rows($result) != 0) {
 	while($row = mysqli_fetch_assoc($result)) {
 		if($i != $rowcount)
 		{
+			if($row['email_confirmed'] == 1)
+				$row['email_confirmed'] = "SI";
+			else
+				$row['email_confirmed'] = "NO";
+
+			if($row['terms'] == 1)
+				$row['terms'] = "SI";
+			else
+				$row['terms'] = "NO";		
+
+			$time = strtotime($row['reg_date']);
+			$reg_date = date("d/m/y ", $time);
+			
+			
+			$time = strtotime($row['last_login']);
+			$last_login = date("d/m/y ", $time);
+			
+
 			//$arr[] = $row;
 			$pic = ($row['profilo_pic'] <> "") ? $row['profilo_pic'] : "profile_pic/no_avatar.png" ;
 
 			$arr1 .= '{ "id":"' .$row['id'] .'","id_utente":"'. $row['id_utente'] . '","level":"'.$row['user_level'] .'","foto":"' .$pic .'", "name":"' .$row['name'] .'","surname":"' .$row['surname'] .'","username":"'. $row['username'] .'","email":"'.$row['email'] .
-			'","email_confirmed":"'.$row['email_confirmed'].'","terms":"' .$row['terms']. '","reg_date":"' . $row['reg_date'] .'","certificato":"'. $row['certificato']. '","last_login":"' . $row['last_login'] .'"},';
+			'","email_confirmed":"'.$row['email_confirmed'].'","terms":"' .$row['terms']. '","reg_date":"' . $reg_date.'","certificato":"'. $row['certificato']. '","last_login":"' . $last_login .'"},';
 			$i++;
 		}else{
+
+				if($row['email_confirmed'] == 1)
+				$row['email_confirmed'] = "SI";
+			else
+				$row['email_confirmed'] = "NO";
+
+			if($row['terms'] == 1)
+				$row['terms'] = "SI";
+			else
+				$row['terms'] = "NO";	
+
+			$time = strtotime($row['reg_date']);
+			$reg_date = date("d/m/y ", $time);
+			
+			
+			$time = strtotime($row['last_login']);
+			$last_login = date("d/m/y ", $time);	
+
 			$arr1 .= '{ "id":"' .$row['id']  .'","id_utente":"'. $row['id_utente'] . '","level":"'.$row['user_level'] .'","foto":"' .$pic .'", "name":"' .$row['name'] .'","surname":"' .$row['surname'] .'","username":"'. $row['username'] .'","email":"'.$row['email'] .
-			'","email_confirmed":"'.$row['email_confirmed'].'","terms":"' .$row['terms']. '","reg_date":"' . $row['reg_date'] .'","certificato":"'. $row['certificato']. '","last_login":"' . $row['last_login'] .'"}';
+			'","email_confirmed":"'.$row['email_confirmed'].'","terms":"' .$row['terms']. '","reg_date":"' . $reg_date .'","certificato":"'. $row['certificato']. '","last_login":"' .$last_login .'"}';
 			$i++;
 		}
 			

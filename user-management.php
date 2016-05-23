@@ -103,13 +103,13 @@ unlink("sezione/infobanca/infobanca.json");
 														<th ng-click="sort(id)" ><?php echo $lang['IMAGE'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['NAME'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['SURNAME'];?></th>
-														<th ng-click="sort(id)"><?php echo $lang['USERNAME'];?></th>
+														<!--<th ng-click="sort(id)"><?php echo $lang['USERNAME'];?></th>-->
 														<th ng-click="sort(id)"><?php echo $lang['EMAIL'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['EMAIL_CONFIRMED'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['ACCEPTED_TERMS'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['USER_LEVEL'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['REG_DATE'];?></th>
-														<th ng-click="sort(id)"><?php echo $lang['CERT_MEDICO'];?></th>
+														<!--<th ng-click="sort(id)"><?php echo $lang['CERT_MEDICO'];?></th>-->
 														<th ng-click="sort(id)"><?php echo $lang['COMPLETE'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['LAST_LOGIN'];?></th>
 														<th ng-click="sort(id)"><?php echo $lang['DELETE'];?></th>
@@ -122,7 +122,7 @@ unlink("sezione/infobanca/infobanca.json");
 															<td><a href="#" target="_black"><img src="{{list.foto}}" alt="" width="50" height="50"></a></td>
 															<td>{{list.name}}</td>
 															<td>{{list.surname}}</td>
-															<td>{{list.username}}</td>
+															<!--<td>{{list.username}}</td>-->
 															<td>{{list.email}}</td>
 															<td>{{list.email_confirmed}}</td>
 															<td>{{list.terms}}</td>
@@ -142,7 +142,7 @@ unlink("sezione/infobanca/infobanca.json");
 																</form>
 															</td>
 															<td>{{list.reg_date}}</td>
-															<td>{{list.certificato}}</td>
+															<!--<td>{{list.certificato}}</td>-->
 															<td>30%</td>
 															<td>{{list.last_login}}</td>
 															<td>

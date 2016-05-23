@@ -90,17 +90,14 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 										<div id="status"></div>
 										<ul class="file-details">
 											<h3>
-												You can add additional profile data or information that you wish here!
+												Inserisci la tua immagine
 											</h3>
-											<?php profile_details($user_id);?>
+											<?php 
+												
+											?>
 										</ul>
 											<br><hr>
-											<div style="margin-left:40px;">
-												<h3>
-													Change your Password
-												</h3>
-												<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><?php echo $lang['CHANGE_PASSWORD'];?></a>
-												</div>	
+											
 										</div>	
 									</div>
 								</div>
@@ -113,28 +110,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 
 	</div><!-- End Main Wrapper  -->
    <!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		  <div class="modal-header">
-		   <form method="post" action="data/change-password.php">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel"><?php echo $lang['CHANGE_PASSWORD'];?></h4>
-		  </div>
-		  <div class="modal-body">
-			<?php echo $lang['CREATE_NEW_PASSWORD'];?> <br>
-			 <div class="form-group">
-				 <input type="password" class="form-control margin-10" id="password" name="pwd" placeholder="Password">
-				 <input type="password" class="form-control margin-10" id="password" name="cpwd" placeholder="Confirm Password">
-			  </div>
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $lang['CLOSE'];?></button>
-			<button type="submit" class="btn btn-primary"><?php echo $lang['SAVE'];?></button>
-			</form>
-		  </div>
-		</div>
-	  </div>
+	
 	</div>
     <!-- jQuery -->
     <script src="assets/js/jquery.js"></script>
