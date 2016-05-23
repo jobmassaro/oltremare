@@ -59,14 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		// Check the current password:
 		$q = "SELECT pass FROM cv_members WHERE id=" .$uid;	
 		$result = $mysqli->query($sql);
-		var_dump($q);
-		die();
-
 		list($hash) = mysqli_fetch_array($result, MYSQLI_NUM);
-		
-
-
-
 		// Validate the password:
 		// Include the password_compat library, if necessary:
 		// include('./includes/lib/password.php');
