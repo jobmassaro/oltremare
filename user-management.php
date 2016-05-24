@@ -93,7 +93,8 @@ unlink("sezione/infobanca/infobanca.json");
 													<form class="form-inline">
                 									<div class="form-group">
                   										<label>Cerca </label>
-                  										<input type="text" ng-model="search.$" class="form-control" placeholder="Cerca" size="55"/>
+                  										<input type="text" ng-model="search" placeholder="Cerca" class="form-control" size="55"/><br/>
+                  										<!-- <input type="text" ng-model="search.$" class="form-control" placeholder="Cerca" size="55"/>-->
                 									</div>            
 												</form>
 												</div>
@@ -118,7 +119,8 @@ unlink("sezione/infobanca/infobanca.json");
 												</thead>
 
 												<tbody>
-													<tr dir-paginate="list in details|itemsPerPage:10| filter: search : sortKey=reverse">
+													<tr ng-repeat="list in filtered | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+													<!--<tr dir-paginate="list in details|itemsPerPage:10| filter: search : sortKey=reverse">-->
 															<td><a href="#" target="_black"><img src="{{list.foto}}" alt="" width="50" height="50"></a></td>
 															<td>{{list.name}}</td>
 															<td>{{list.surname}}</td>
@@ -164,7 +166,8 @@ unlink("sezione/infobanca/infobanca.json");
 														</tr>	
 													<?php //user_table_complete2(); ?>
 												</tbody>
-												 <dir-pagination-controls max-size=10 direction-links="true" boundary-links="10"></dir-pagination-controls>
+												<pagination data-boundary-links="true" data-num-pages="noOfPages" data-current-page="currentPage" max-size="maxSize" class="pagination-small" data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>
+												 <!--<dir-pagination-controls max-size=10 direction-links="true" boundary-links="10"></dir-pagination-controls>-->
 											</table>
 										</div>
 									</div>
