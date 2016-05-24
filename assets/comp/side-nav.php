@@ -26,7 +26,7 @@
 
 <li class="side-menu menu-item <?php if($page=='scuolextra.php'){echo 'active';}?>">
 	<a href="scuolextra.php">
-		<i class="fa fa-list" aria-hidden="true"></i><?php echo 'SCUOLE EXTRA';?>
+		<i class="fa fa-list" aria-hidden="true"></i><?php echo 'SCUOLE';?>
 	</a>
 </li>
 
@@ -40,7 +40,7 @@
 
 <li class="side-menu menu-item <?php if($page=='traffic-statistics.php'){echo 'active';}?>">
 	<a href="traffic-statistics.php">
-		<i class="fa-rocket"></i> <?php echo $lang['TRAFFIC_STATISTICS'];?>
+		<i class="fa-rocket"></i> <?php echo 'STATISTICHE'; ?>
 	</a>
 </li>
 <li class="side-menu menu-item <?php if($page=='settings.php' || $page=='rl-settings.php' || $page=='user-levels.php' || $page=='email-welcome.php' || $page=='send-email.php' || $page=='update.php'){echo 'active';}?>" >
