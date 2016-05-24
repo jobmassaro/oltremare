@@ -7,7 +7,7 @@ $pdf->AliasNbPages();
 $pdf->SetAutoPageBreak(true, 15);
 
 $pdf->AddPage();
-$pdf->Image('../../assets/img/lplogo-1.png',18,13,33);
+$pdf->Image('../../assets/img/logo-oltremare-1985.png',18,13,33);
 $pdf->SetFont('Arial','B',14);
 $pdf->WriteHTML('');
 
