@@ -31,8 +31,8 @@ app.controller('listMemberCtrl', function($scope, $http, filterFilter){
             
 
             $scope.currentPage = 1; //current page
-            $scope.maxSize = 5; //pagination max size
-            $scope.entryLimit = 5; //max rows for data table
+            $scope.maxSize = 10; //pagination max size
+            $scope.entryLimit = 10; //max rows for data table
 
             /* init pagination with $scope.list */
             $scope.noOfPages = Math.ceil($scope.details.length/$scope.entryLimit);
