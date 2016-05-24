@@ -526,7 +526,7 @@ $arr1 .="]";
 <div ng-cloak="" class="tabsdemoDynamicHeight" ng-app="MyApp">
   <md-content>
     <md-tabs md-dynamic-height="" md-border-bottom="">
-      <md-tab label="Generale">
+      <md-tab label="Anagrafica">
         <md-content class="md-padding">
           <?php echo $uid; ?>
            <div ng-include src="'sezione/generale/index.php'"></div>

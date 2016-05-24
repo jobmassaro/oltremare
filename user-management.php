@@ -167,7 +167,8 @@ unlink("sezione/infobanca/infobanca.json");
 													<?php //user_table_complete2(); ?>
 												</tbody>
 												<!--<pagination data-boundary-links="true" data-num-pages="noOfPages" data-current-page="currentPage" max-size="maxSize" class="pagination-small" data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>-->
-												 <dir-pagination-controls max-size=10 direction-links="true" boundary-links="10"></dir-pagination-controls>
+												<!-- <dir-pagination-controls max-size=10 direction-links="true" boundary-links="10"></dir-pagination-controls> -->
+												<dir-pagination-controls data-boundary-links="true" data-num-pages="noOfPages" data-current-page="currentPage" max-size="maxSize" class="pagination-small" data-previous-text="&laquo;" data-next-text="&raquo;"></dir-pagination-controls>
 											</table>
 										</div>
 									</div>
