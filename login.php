@@ -43,7 +43,7 @@ list($meta_title, $meta_description, $site_title, $site_email, $site_logo) = all
 						
                 <form method="post" action="access/process_login.php" class="form-horizontal login-form">
 								<fieldset>
-									<img src="assets/logos/lplogo-1.png" style="width:50%;"><br>
+									<img src="assets/img/logo-oltremare-1985.png" style="width:50%;"><br>
 											<?php if($_GET['logoff']=='1'){
 													echo '<span class="success-text">You have logged off successfully</span>';
 											} 
