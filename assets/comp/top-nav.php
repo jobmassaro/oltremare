@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 		<!-- Logo -->
 		<div class="logo">
-			<a href="dashboard.php"> <img src="assets/logos/<?php echo $site_logo;?>">
+			<a href="dashboard.php"> <img src="assets/img/logo-oltremare-1985.png">
 			</a>
 		</div>
 		<!-- End Logo -->
